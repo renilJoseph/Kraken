@@ -1,0 +1,32 @@
+﻿<!-- main app container -->
+<div class="row">
+    <div class="jumbotron">
+        <div class="col-md-1"></div>
+        <div class="col-md-1"></div>
+        <div class="col-md-1"></div>
+        <div class="col-md-1"></div>
+        <div class="col-md-1"></div>
+        <div class="col-md-1"></div>
+        <div class="col-md-1"></div>
+        <div class="col-md-1"></div>
+        <div class="col-md-1"></div>
+        <div class="col-md-1"></div>
+        
+
+
+        <div class="col-md-2 col-md-offset-11">
+            <a [routerLink]="['/login']">
+                <button class="LoginButton">Logout</button></a>
+                <button (click)="show = !show" class="telemetryView">{{show ? 'hide' : 'show'}}</button>
+                show = {{show}}
+        </div>
+    </div>
+</div>
+<div class="bottompart">
+    <div class="row" ><!--style="border:3px solid black"-->
+        <div class="col-sm-12 nopadding">
+            <alert></alert>
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

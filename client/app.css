@@ -1,0 +1,32 @@
+﻿a {
+    cursor: pointer;
+}
+
+.help-block {
+    font-size: 12px;
+}
+.row {
+    margin-right: 0px;
+    padding-right: 0px;
+    padding-left:0px;
+    margin-left:0px;
+    margin-bottom:0px;
+
+}
+.jumbotron {
+    padding-bottom: 27px;
+    background-color:darkblue;
+}
+.bottompart .row {
+    height:100%;
+    bottom:0px;
+}
+
+input[type=checkbox] {
+    vertical-align: middle;
+    float: right;
+}
+.nopadding {
+    padding: 0 !important;
+    margin: 0 !important;
+}
