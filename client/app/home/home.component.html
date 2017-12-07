@@ -1,4 +1,3 @@
-﻿
 <div class="col-md-2 col-md-offset-0" > <!--style="border:3px solid black;"-->
     <robot></robot>
     <br /><br /><br /><br />
@@ -6,9 +5,13 @@
 </div>
 <div class="col-md-8 col-md-offset-0" align="center"><!-- style="border:3px solid black;"-->
     <h1>Hi {{currentUser.firstName}}!</h1>
-    <p>Welcome to Robot Management App!!!</p>
-    <div id="map"></div>
-    <img src="http://localhost:8080/stream?topic=/image" width="900"/>
+    <p>Welcome to the Robot Management App!</p>
+	<input type="number"  #xOffset>
+	<input type="number"  #yOffset>
+	<input type="number"  #Width>
+	<input type="number"  #Height>
+    <button (click)="resizeWindow(xOffset.value, yOffset.value, Width.value, Height.value)">Change Viewer Size (xOffset, yOffset, Width, Height)</button>
+    <div id="viewer"></div>
     <button (click)="launchHusky()">Launch Husky Simulator</button>
     <button (click)="shutdownHusky()">Shutdown Husky Simulator</button>
     <!--<ul>
@@ -25,3 +28,4 @@
     <button (click)="stopCmdVel()">Stop</button>
     <button (click)="pubCmdVel(0.5)">Forward</button>
 </div>
+

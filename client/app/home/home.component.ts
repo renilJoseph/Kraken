@@ -1,10 +1,11 @@
-﻿import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { User } from '../_models/index';
 import { UserService } from '../_services/index';
 
 declare var ROSLIB: any;
 declare var ROS3D: any;
+declare var MJPEGCANVAS: any;
 
 @Component({
     moduleId: module.id,
@@ -27,7 +28,7 @@ export class HomeComponent implements OnInit {
     ngOnInit() {
         this.loadAllUsers();
         this.ros = new ROSLIB.Ros({
-            url : 'ws://localhost:9090'
+            url : 'ws://192.168.1.163:9090'
           });
         
         this.ros.on('connection', function() {
@@ -41,6 +42,17 @@ export class HomeComponent implements OnInit {
         this.ros.on('close', function() {
         console.log('Connection to websocket server closed.');
         });
+
+    	// Create the main viewer.
+    	var viewer = new MJPEGCANVAS.Viewer({
+      		divID : 'viewer',
+      		host : '192.168.1.163',
+      		width : 900,
+      		height : 497,
+		quality : 90,
+      		topic : '/image',
+		refreshRate : 30
+    	});
 
         var cmdVel = new ROSLIB.Topic({
             ros : this.ros,
@@ -112,6 +124,25 @@ export class HomeComponent implements OnInit {
         })
     }
 
+	resizeWindow(xOffset: number, yOffset: number, width: number, height: number)
+	{
+		 console.log(" " + xOffset + " " + yOffset + " " + width + " " + height);
+         var roi = new ROSLIB.Topic({
+            ros : this.ros,
+            name : '/screen_grab/roi',
+            messageType : 'sensor_msgs/RegionOfInterest'
+        });
+        var region = new ROSLIB.Message({
+			x_offset : this.ToUint32(xOffset),
+			y_offset : this.ToUint32(yOffset),
+			height : this.ToUint32(height),
+			width : this.ToUint32(width),
+			do_rectify : false
+        });
+
+		roi.publish(region);
+	}
+
     pubCmdVel(speed: number)
     {
         this.stopCmdVel();
@@ -141,6 +172,17 @@ export class HomeComponent implements OnInit {
     stopCmdVel()
     {
         clearInterval(this.intervalVar);
+    }
+
+    modulo(a: any, b: any) {
+        return a - Math.floor(a/b)*b;
+    }
+    ToUint32(x: any) {
+        return this.modulo(this.ToInteger(x), Math.pow(2, 32));
+    }
+    ToInteger(x: any) {
+        x = Number(x);
+        return x < 0 ? Math.ceil(x) : Math.floor(x);
     }
 
 
