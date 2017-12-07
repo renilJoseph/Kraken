@@ -6,12 +6,12 @@
 <div class="col-md-8 col-md-offset-0" align="center"><!-- style="border:3px solid black;"-->
     <h1>Hi {{currentUser.firstName}}!</h1>
     <p>Welcome to the Robot Management App!</p>
+    <div id="viewer"></div>
 	<input type="number"  #xOffset>
 	<input type="number"  #yOffset>
 	<input type="number"  #Width>
 	<input type="number"  #Height>
-    <button (click)="resizeWindow(xOffset.value, yOffset.value, Width.value, Height.value)">Change Viewer Size (xOffset, yOffset, Width, Height)</button>
-    <div id="viewer"></div>
+    <button (click)="resizeWindow(xOffset.value, yOffset.value, Width.value, Height.value)">Change Viewer Size (xOffset, yOffset, Width, Height)</button><br />
     <button (click)="launchHusky()">Launch Husky Simulator</button>
     <button (click)="shutdownHusky()">Shutdown Husky Simulator</button>
     <!--<ul>
