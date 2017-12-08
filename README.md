@@ -66,11 +66,9 @@ Source devel/setup.sh if not already done
 ```
 roslaunch screen_grab screen_grab.launch
 ```
-Now we can change the region of interest in the screen by publishing to screen_grab/roi, and the video is constantly published to the topic /image
-Region of interest is made up of an xOffset and yOffset from the top left of the screen, in pixels.
-Also a height and width starting from that offset.
-In order to make this easily viewable in the web application:
-Make sure the web_video_server package is installed, before running it
+Now we can change the region of interest in the screen by publishing to screen_grab/roi, and the video is constantly published to the topic /image.
+Region of interest is made up of an xOffset and yOffset from the top left of the screen, in pixels, as well as a height and width starting from that offset.
+In order to make this easily viewable in the web application, use the web_video_server package:
 ```
 rosrun web_video_server web_video_server
 ```
