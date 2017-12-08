@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit {
     ngOnInit() {
         this.loadAllUsers();
         this.ros = new ROSLIB.Ros({
-            url : 'ws://192.168.1.163:9090'
+            url : 'ws://localhost:9090'
           });
         
         this.ros.on('connection', function() {
@@ -46,7 +46,7 @@ export class HomeComponent implements OnInit {
     	// Create the main viewer.
     	var viewer = new MJPEGCANVAS.Viewer({
       		divID : 'viewer',
-      		host : '192.168.1.163',
+      		host : 'localhost',
       		width : 900,
       		height : 497,
 		quality : 90,
