@@ -60,14 +60,15 @@ rosrun rma rma_connection_server.py
 ```
 This will start the ROS node that will allow you to launch and shutdown the husky simulator through a ROS service. 
 ### Visualization
-Clone screengrab_ros from https://github.com/lucasw/screen_grab
-Add screen_grab to catkin_ws/src and use catkin_make
-Source devel/setup.sh if not already done
+Clone screengrab_ros from https://github.com/lucasw/screen_grab.
+Add screen_grab to catkin_ws/src and use catkin_make.
+Source devel/setup.sh if not already done.
 ```
 roslaunch screen_grab screen_grab.launch
 ```
 Now we can change the region of interest in the screen by publishing to screen_grab/roi, and the video is constantly published to the topic /image.
 Region of interest is made up of an xOffset and yOffset from the top left of the screen, in pixels, as well as a height and width starting from that offset.
+
 In order to make this easily viewable in the web application, use the web_video_server package:
 ```
 rosrun web_video_server web_video_server
