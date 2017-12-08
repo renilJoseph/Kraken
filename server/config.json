@@ -1,5 +1,5 @@
 ﻿{
     "connectionString": "mongodb://localhost:27017/Robot-Management-Application",
-    "apiUrl": "http://192.168.1.163:4000",
+    "apiUrl": "http://localhost:4000",
     "secret": "SECRET STRING"
 }
