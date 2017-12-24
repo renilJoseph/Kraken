@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RosService } from '../_services/index';
 
 @Component({
   moduleId: module.id,
