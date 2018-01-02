@@ -21,7 +21,6 @@ export class HomeComponent implements OnInit {
     show: boolean = true;
     speed1: any = 0;
     messageOutput: string = 'Odometry Telemetry';
-    intervalVar: any;
     constructor(private userService: UserService, private rosService:RosService) {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
@@ -128,37 +127,6 @@ export class HomeComponent implements OnInit {
 
 		roi.publish(region);
 	}
-
-    pubCmdVel(speed: number)
-    {
-        this.stopCmdVel();
-        var cmdVel = new ROSLIB.Topic({
-            ros : this.ros,
-            name : '/cmd_vel',
-            messageType : 'geometry_msgs/Twist'
-        });
-        var twist = new ROSLIB.Message({
-            linear : {
-            x : speed,
-            y : 0.0,
-            z : 0.0
-            },
-            angular : {
-            x : 0,
-            y : 0,
-            z : 0
-            }
-        });
-
-        this.intervalVar = setInterval(() => {
-			cmdVel.publish(twist);
-  		}, 100);
-    }
-
-    stopCmdVel()
-    {
-        clearInterval(this.intervalVar);
-    }
 
     modulo(a: any, b: any) {
         return a - Math.floor(a/b)*b;

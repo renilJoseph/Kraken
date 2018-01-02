@@ -16,6 +16,7 @@ import { RobotSelectComponent } from './robot-select/index';
 import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
 import { TeleopComponent } from './teleop/index';
+import { AuthComponent } from './auth/index';
 @NgModule({
     imports: [
         BrowserModule,
@@ -31,7 +32,8 @@ import { TeleopComponent } from './teleop/index';
         RegisterComponent,
         RobotSelectComponent,
         SensorSelectComponent,
-        TeleopComponent
+        TeleopComponent,
+        AuthComponent
     ],
     providers: [
         customHttpProvider,
