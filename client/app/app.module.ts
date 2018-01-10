@@ -17,6 +17,7 @@ import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
 import { TeleopComponent } from './teleop/index';
 import { AuthComponent } from './auth/index';
+import { MenubarComponent } from './menubar/index';
 @NgModule({
     imports: [
         BrowserModule,
@@ -33,7 +34,8 @@ import { AuthComponent } from './auth/index';
         RobotSelectComponent,
         SensorSelectComponent,
         TeleopComponent,
-        AuthComponent
+        AuthComponent,
+        MenubarComponent
     ],
     providers: [
         customHttpProvider,

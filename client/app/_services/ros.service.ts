@@ -10,7 +10,7 @@ export class RosService{
     if(!this.ros)
     {
       this.ros = new ROSLIB.Ros({
-          url : 'ws://localhost:9090'
+          url : 'ws://10.143.10.186:9090'
       });
 
       this.ros.on('connection', function() {
