@@ -18,6 +18,8 @@ import { RegisterComponent } from './register/index';
 import { TeleopComponent } from './teleop/index';
 import { AuthComponent } from './auth/index';
 import { MenubarComponent } from './menubar/index';
+import { TelemetryComponent } from './telemetry/index';
+
 @NgModule({
     imports: [
         BrowserModule,
@@ -35,7 +37,8 @@ import { MenubarComponent } from './menubar/index';
         SensorSelectComponent,
         TeleopComponent,
         AuthComponent,
-        MenubarComponent
+        MenubarComponent,
+        TelemetryComponent
     ],
     providers: [
         customHttpProvider,

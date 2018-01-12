@@ -12,6 +12,7 @@ declare var ROSLIB: any;
 
 export class TelemetryComponent implements OnInit {
   ros: any;
+  messageOutput: string;
   constructor(private rosService: RosService){
 
   }
