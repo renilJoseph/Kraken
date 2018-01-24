@@ -6,11 +6,12 @@ export class RosService{
   private ros: any;
 
   constructor(){}
+  //ws://10.143.10.186:9090
   public getROS(): any{
     if(!this.ros)
     {
       this.ros = new ROSLIB.Ros({
-          url : 'ws://10.143.10.186:9090'
+          url : 'ws://localhost:9090'
       });
 
       this.ros.on('connection', function() {

@@ -1,0 +1,24 @@
+<div class="row" ><!--style="border:3px solid black"-->
+    <div class="col-sm-12 nopadding">
+      <div class="col-md-9 col-md-offset-0" > <!--style="border:3px solid black;"-->
+        <div id="viewer"></div>
+        <input type="number"  #xOffset>
+        <input type="number"  #yOffset>
+        <input type="number"  #Width>
+        <input type="number"  #Height>
+          <button (click)="resizeWindow(xOffset.value, yOffset.value, Width.value, Height.value)">Change Viewer Size (x, y, Width, Height)</button><br />
+          <teleop></teleop>
+          <!--<ul>
+              <li *ngFor="let user of users">
+                  {{user.username}} ({{user.firstName}} {{user.lastName}})
+                  - <a (click)="deleteUser(user._id)">Delete</a>
+              </li>
+          </ul>-->
+      </div>
+
+      <div class="col-md-3 col-md-offset-0" style=" margin:0px; padding:0px; height:100%;"><!--"border:3px solid black;-->
+        <telemetry></telemetry>
+      </div>
+
+    </div>
+  </div>

@@ -19,7 +19,8 @@ import { TeleopComponent } from './teleop/index';
 import { AuthComponent } from './auth/index';
 import { MenubarComponent } from './menubar/index';
 import { TelemetryComponent } from './telemetry/index';
-
+import { JackalComponent } from './jackal/index';
+import { WelcomeComponent } from './welcome/index';
 @NgModule({
     imports: [
         BrowserModule,
@@ -38,14 +39,16 @@ import { TelemetryComponent } from './telemetry/index';
         TeleopComponent,
         AuthComponent,
         MenubarComponent,
-        TelemetryComponent
+        TelemetryComponent,
+        JackalComponent,
+        WelcomeComponent
     ],
     providers: [
         customHttpProvider,
         AuthGuard,
         AlertService,
         AuthenticationService,
-	MenubarComponent,
+	      MenubarComponent,
         UserService
     ],
     bootstrap: [AppComponent]
