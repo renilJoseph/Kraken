@@ -16,7 +16,6 @@ export class TelemetryComponent implements OnInit {
   constructor(private rosService: RosService){
 
   }
-
   ngOnInit(){
     this.ros = this.rosService.getROS();
     // Subscribing to a Topic

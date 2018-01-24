@@ -1,6 +1,6 @@
 <menubar  (onTlm)="onTlm($event);"></menubar>
 <div class="bottompart">
-    <div class=".row">
+    <div class=".row" style="border:3px solid black;">
         <div class="col-sm-12 nopadding">
 
 		<div [ngClass]="show != false ? 'col-md-8 col-md-offset-0':'col-md-12 col-md-offset-0'"><!-- style="border:3px solid black;" > 

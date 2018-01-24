@@ -21,7 +21,7 @@ export class MenubarComponent implements OnInit{
         this.showTlm = true;
   }
   HideButton(value: boolean){
-	this.onTlm.emit(value)
+	this.onTlm.emit(!value)
         this.showTlm = false;
   }
 

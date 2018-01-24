@@ -35,8 +35,8 @@ export class HomeComponent implements OnInit {
 	if (!value)
 		this.show = false;
 		// "fullscreen"
-		//this.viewer.width = '1200';
-		
+		this.viewer.width = '1200';
+		this.viewer.changeStream('/image')
     }
     changeWidthBig() {
 	alert('Function Called');
