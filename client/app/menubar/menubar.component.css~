@@ -1,0 +1,19 @@
+.navbar{
+  background-color: darkblue;
+}
+
+.navbar-default .navbar-brand{
+  color: white;
+}
+
+.navbar-default a{
+  color: white;
+}
+
+.navbar-default a:hover{
+  color: lightgray;
+}
+
+.dropdown-menu a{
+  color: black;
+}

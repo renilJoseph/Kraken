@@ -1,0 +1,31 @@
+<menubar  (onTlm)="onTlm($event);"></menubar>
+<div class="bottompart">
+    <div class=".row" style="border:3px solid black;">
+        <div class="col-sm-12 nopadding">
+
+		<div [ngClass]="show != false ? 'col-md-8 col-md-offset-0':'col-md-12 col-md-offset-0'"><!-- style="border:3px solid black;" > 
+		<!--style="border:3px solid black;" class="col-md-8 col-md-offset-0"--> 
+		  <div id="viewer"></div>
+			<input type="number"  #xOffset>
+			<input type="number"  #yOffset>
+			<input type="number"  #Width>
+			<input type="number"  #Height>
+		    <button (click)="resizeWindow(xOffset.value, yOffset.value, Width.value, Height.value)">Change Viewer Size (x, y, Width, Height)</button><br />
+		    <button (click)="launchHusky()">Launch Husky Simulator</button>
+		    <button (click)="shutdownHusky()">Shutdown Husky Simulator</button>
+		    <teleop></teleop>
+		    <!--<ul> HTML below could be useful at some point, leaving it 
+			<li *ngFor="let user of users">
+			    {{user.username}} ({{user.firstName}} {{user.lastName}})
+			    - <a (click)="deleteUser(user._id)">Delete</a>
+			</li>
+		    </ul>-->
+		</div>
+
+		<div class="col-md-4 col-md-offset-0" style="margin:0px; padding:0px; height:90vh; background-color:lightGray;" *ngIf="show"><!--"border:3px solid black;-->
+		  <telemetry></telemetry>
+		</div>
+
+       </div>
+    </div>
+</div>
