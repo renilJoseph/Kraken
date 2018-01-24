@@ -16,6 +16,7 @@ export class TelemetryComponent implements OnInit {
   constructor(private rosService: RosService){
 
   }
+
   ngOnInit(){
     this.ros = this.rosService.getROS();
     // Subscribing to a Topic
@@ -29,16 +30,16 @@ export class TelemetryComponent implements OnInit {
     listener.subscribe((message: any) => {
           this.messageOutput = 'Odometry Telemetry\n'
                               + 'Orientation: \t('
-                              + message.pose.pose.orientation.w.toFixed(3)
-                              + ', ' + message.pose.pose.orientation.x.toFixed(3)
-                              + ', ' + message.pose.pose.orientation.y.toFixed(3)
-                              + ', ' + message.pose.pose.orientation.z.toFixed(3)
+                              + 'w: ' + message.pose.pose.orientation.w.toFixed(3)
+                              + ', x: ' + message.pose.pose.orientation.x.toFixed(3)
+                              + ', y: ' + message.pose.pose.orientation.y.toFixed(3)
+                              + ', z: ' + message.pose.pose.orientation.z.toFixed(3)
                               + ')\nPosition: \t(' + message.pose.pose.position.x.toFixed(3)
-                              + ', ' + message.pose.pose.position.y.toFixed(3)
-                              + ', ' + message.pose.pose.position.z.toFixed(3)
+                              + ', y: ' + message.pose.pose.position.y.toFixed(3)
+                              + ', z: ' + message.pose.pose.position.z.toFixed(3)
                               + ')\nVelocity: \t(' + message.twist.twist.linear.x.toFixed(3)
-                              + ', ' + message.twist.twist.linear.y.toFixed(3)
-                              + ', ' + message.twist.twist.linear.z.toFixed(3) + ')';
+                              + ', y: ' + message.twist.twist.linear.y.toFixed(3)
+                              + ', z: ' + message.twist.twist.linear.z.toFixed(3) + ')';
       });
   }
 }

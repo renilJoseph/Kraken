@@ -45,6 +45,7 @@ import { TelemetryComponent } from './telemetry/index';
         AuthGuard,
         AlertService,
         AuthenticationService,
+	MenubarComponent,
         UserService
     ],
     bootstrap: [AppComponent]

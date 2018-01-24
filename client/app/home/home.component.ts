@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Input } from '@angular/core';
 
 import { User } from '../_models/index';
 import { UserService } from '../_services/index';
 import { RosService } from '../_services/index';
+import { MenubarComponent } from '../menubar/index';
 
 declare var ROSLIB: any;
 declare var ROS3D: any;
@@ -18,13 +19,29 @@ export class HomeComponent implements OnInit {
     ros: any;
     currentUser: User;
     users: User[] = [];
-    show: boolean = true;
     speed1: any = 0;
     messageOutput: string = 'Odometry Telemetry';
-    constructor(private userService: UserService, private rosService:RosService) {
+    show : boolean = true;
+    constructor(private userService: UserService, private rosService:RosService, private menubar: MenubarComponent) {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+	this.show = true;
     }
-
+    // event listener/handler for telemetry panel (listens to child component menubar button)
+    onTlm(value: boolean) {
+	if (value)
+		this.show = true;
+		// size to normal
+		//this.viewer.width = 900;
+	if (!value)
+		this.show = false;
+		// "fullscreen"
+		//this.viewer.width = '1200';
+		
+    }
+    changeWidthBig() {
+	alert('Function Called');
+	document.getElementById('canvas').style.width= "1400px";
+    }
     ngOnInit() {
         this.loadAllUsers();
         this.ros = this.rosService.getROS();
@@ -38,7 +55,6 @@ export class HomeComponent implements OnInit {
       		topic : '/image',
 		refreshRate : 30
     	});
-
         var cmdVel = new ROSLIB.Topic({
             ros : this.ros,
             name : '/cmd_vel',
@@ -54,8 +70,8 @@ export class HomeComponent implements OnInit {
   		});
 
   		listener.subscribe((message: any) => {
-            if(this.show == true)
-            this.messageOutput = 'Odometry Telemetry\n'
+            
+        this.messageOutput = 'Odometry Telemetry\n'
                                 + 'Orientation: \t('
                                 + message.pose.pose.orientation.w.toFixed(3)
                                 + ', ' + message.pose.pose.orientation.x.toFixed(3)
@@ -67,8 +83,7 @@ export class HomeComponent implements OnInit {
                                 + ')\nVelocity: \t(' + message.twist.twist.linear.x.toFixed(3)
                                 + ', ' + message.twist.twist.linear.y.toFixed(3)
                                 + ', ' + message.twist.twist.linear.z.toFixed(3) + ')';
-            else
-                this.messageOutput = '';
+
         });
 
     }
@@ -111,8 +126,8 @@ export class HomeComponent implements OnInit {
 
 	resizeWindow(xOffset: number, yOffset: number, width: number, height: number)
 	{
-		 console.log(" " + xOffset + " " + yOffset + " " + width + " " + height);
-         var roi = new ROSLIB.Topic({
+	    console.log(" " + xOffset + " " + yOffset + " " + width + " " + height);
+            var roi = new ROSLIB.Topic({
             ros : this.ros,
             name : '/screen_grab/roi',
             messageType : 'sensor_msgs/RegionOfInterest'
