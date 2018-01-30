@@ -1,6 +1,6 @@
 <div class="row" ><!--style="border:3px solid black"-->
     <div class="col-sm-12 nopadding">
-      <div class="col-md-8 col-md-offset-0"><!-- [ngClass]="show != false ? 'col-md-8 col-md-offset-0':'col-md-12 col-md-offset-0'" -->
+      <div><!-- [ngClass]="show != false ? 'col-md-8 col-md-offset-0':'col-md-12 col-md-offset-0'" -->
         <div id="viewer"></div>
         <input type="number"  #xOffset>
         <input type="number"  #yOffset>

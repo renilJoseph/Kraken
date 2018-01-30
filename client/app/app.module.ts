@@ -9,7 +9,7 @@ import { routing } from './app.routing';
 import { customHttpProvider } from './_helpers/index';
 import { AlertComponent } from './_directives/index';
 import { AuthGuard } from './_guards/index';
-import { AlertService, AuthenticationService, UserService } from './_services/index';
+import { AlertService, AuthenticationService, UserService, HideService } from './_services/index';
 import { HomeComponent } from './home/index';
 import { SensorSelectComponent } from './sensor-select/index';
 import { RobotSelectComponent } from './robot-select/index';
@@ -21,6 +21,10 @@ import { MenubarComponent } from './menubar/index';
 import { TelemetryComponent } from './telemetry/index';
 import { JackalComponent } from './jackal/index';
 import { WelcomeComponent } from './welcome/index';
+import { SettingsComponent } from './settings/index';
+import { ChangeNameComponent } from './settings/change-name/index';
+import { ChangeUsernameComponent } from './settings/change-username/index';
+import { ChangePasswordComponent } from './settings/change-password/index';
 @NgModule({
     imports: [
         BrowserModule,
@@ -41,14 +45,19 @@ import { WelcomeComponent } from './welcome/index';
         MenubarComponent,
         TelemetryComponent,
         JackalComponent,
-        WelcomeComponent
+        WelcomeComponent,
+	SettingsComponent,
+	ChangeNameComponent,
+	ChangeUsernameComponent,
+	ChangePasswordComponent
     ],
     providers: [
         customHttpProvider,
         AuthGuard,
         AlertService,
+	HideService,
         AuthenticationService,
-	      MenubarComponent,
+	MenubarComponent,
         UserService
     ],
     bootstrap: [AppComponent]

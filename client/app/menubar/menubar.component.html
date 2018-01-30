@@ -39,7 +39,7 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Robots<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Jackal</a></li>
+            <li><a [routerLink]="['/jackal']">Jackal</a></li><!--<a [routerLink]="['/jackal']">-->
             <li><a href="#">Husky</a></li>
           </ul>
         </li>
@@ -49,13 +49,18 @@
             <li><a href="#">Kinect</a></li>
           </ul>
         </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hi {{currentUser.firstName}}!<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+	    <li><a [routerLink]="['/settings']">Settings</a></li>
+            <li><a [routerLink]="['/auth/login']">Logout</a></li>
+          </ul>
+        </li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Hi {{currentUser.firstName}}!</a></li>
-        <li><a [routerLink]="['/auth/login']"><button class="btn btn-default">Logout</button></a></li>
-	<li><button  (click)="ShowButton(true)" *ngIf="!this.showTlm" class="btn btn-default" style="margin-top:15px; margin-left:10px; width:5em;">Show</button></li><!-- [disabled]="showTlm" needed if two buttons wanted -->
-        <li><button  (click)="HideButton(false)" *ngIf="this.showTlm" class="btn btn-default" style="margin-top:15px; margin-left:10px; width:5em;">Hide</button></li> <!-- [disabled]="!showTlm" needed if two buttons wanted -->
+	<li><button *ngIf="!show" (click)="hideservice.showIt(); show = hideservice.getIt();" class="btn btn-default" style="margin-top:15px; margin-left:10px; width:5em;">Show</button></li><!-- [disabled]="showTlm" needed if two buttons wanted (click)="ShowButton(true)" -->
+        <li><button *ngIf="show" (click)="hideservice.hideIt(); show = hideservice.getIt();" class="btn btn-default" style="margin-top:15px; margin-left:10px; width:5em;">Hide</button></li> <!-- [disabled]="!showTlm" needed if two buttons wanted (click)="HideButton(false)"-->
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
