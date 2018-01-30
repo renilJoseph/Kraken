@@ -12,13 +12,14 @@
 
 .switch input {display:none;}
 
+
 .slider {
   position: absolute;
   cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  top: 150px;
+  left: 30px;
+  right: -30px;
+  bottom: -150px;
   background-color: #ccc;
   -webkit-transition: .4s;
   transition: .4s;
@@ -68,6 +69,21 @@ input:checked + .slider:before {
   <span class="slider round"></span>
 </label>
 
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<body>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<div class="w3-container">
+  <h2>Speed Control</h2>
+  <input type="button" class="w3-button w3-black" value="X">
+  <button class="w3-button w3-black">Y</button>
+  <a href="#" class="w3-button w3-black">Z</a>
+</div>
+
+
+</body>
 
 </body>
 </html> 
