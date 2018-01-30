@@ -3,6 +3,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { User } from '../_models/index';
 import { UserService } from '../_services/index';
 import { RosService } from '../_services/index';
+import { HideService } from '../_services/index';
 
 declare var ROSLIB: any;
 declare var ROS3D: any;
@@ -18,10 +19,22 @@ export class JackalComponent implements OnInit {
     ros: any;
     currentUser: User;
     users: User[] = [];
-    constructor(private userService: UserService, private rosService:RosService) {
+    show: boolean;
+    constructor(private userService: UserService, private rosService:RosService, hideservice: HideService) {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        this.show = hideservice.getIt();
     }
 
+  showTlm() {
+       this.hideservice.showIt();
+       this.show = true;
+  }
+
+  hideTlm() {
+      this.hideservice.hideIt();
+      this.show = false;
+  }
+    
     ngOnInit() {
       this.loadAllUsers();
       this.ros = this.rosService.getROS();
