@@ -11,9 +11,11 @@ import { HideService } from '../_services/index';
 export class MenubarComponent implements OnInit{
   currentUser: User;
   show: boolean; 
+  socket : any;
   constructor(public hideservice: HideService) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     this.show = hideservice.getIt();
+    this.socket = "";
     //this.hideservice.toggle$.subscribe((toggle:boolean) => this.show = toggle)
   }
 

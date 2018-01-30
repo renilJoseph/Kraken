@@ -30,3 +30,7 @@ input[type=checkbox] {
     padding: 0 !important;
     margin: 0 !important;
 }
+
+#number {
+ width:9em;
+}

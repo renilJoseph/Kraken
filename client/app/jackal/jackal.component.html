@@ -1,11 +1,12 @@
 <div class="row" ><!--style="border:3px solid black"-->
     <div class="col-sm-12 nopadding">
       <div [ngClass]="this.hideservice.getIt() != false ? 'col-md-8 col-md-offset-0':'col-md-12 col-md-offset-0'"><!-- [ngClass]="show != false ? 'col-md-8 col-md-offset-0':'col-md-12 col-md-offset-0'" class="col-md-8 col-md-offset-0" -->
+	<!--<img [src]="image1"> -->
         <div id="viewer"></div>
-        <input type="number"  #xOffset>
-        <input type="number"  #yOffset>
-        <input type="number"  #Width>
-        <input type="number"  #Height>
+        <input type="number" id="number" #xOffset>
+        <input type="number" id="number"  #yOffset>
+        <input type="number" id="number" #Width>
+        <input type="number" id="number"  #Height>
           <button (click)="resizeWindow(xOffset.value, yOffset.value, Width.value, Height.value)">Change Viewer Size (x, y, Width, Height)</button><br />
           <teleop></teleop>
           <!--<ul>
@@ -16,7 +17,7 @@
           </ul>-->
       </div>
 
-      <div class="col-md-4 col-md-offset-0" style="margin:0px; padding:0px; height:100%;" *ngIf="this.hideservice.getIt()">
+      <div class="col-md-4 col-md-offset-0" style="margin:0px; padding:0px; height:100%; background-color:lightGray; height:90vh" *ngIf="this.hideservice.getIt()">
         <telemetry></telemetry>
       </div>
     </div>
