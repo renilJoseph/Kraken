@@ -20,7 +20,7 @@ export class JackalComponent implements OnInit {
     currentUser: User;
     users: User[] = [];
     show: boolean;
-    constructor(private userService: UserService, private rosService:RosService, hideservice: HideService) {
+    constructor(private userService: UserService, private rosService:RosService, public hideservice: HideService) {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
         this.show = hideservice.getIt();
     }
