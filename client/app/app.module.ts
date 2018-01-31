@@ -46,10 +46,10 @@ import { ChangePasswordComponent } from './settings/change-password/index';
         TelemetryComponent,
         JackalComponent,
         WelcomeComponent,
-	SettingsComponent,
-	ChangeNameComponent,
-	ChangeUsernameComponent,
-	ChangePasswordComponent
+        SettingsComponent,
+        ChangeNameComponent,
+        ChangeUsernameComponent,
+        ChangePasswordComponent
     ],
     providers: [
         customHttpProvider,
@@ -57,7 +57,7 @@ import { ChangePasswordComponent } from './settings/change-password/index';
         AlertService,
 	HideService,
         AuthenticationService,
-	MenubarComponent,
+	      MenubarComponent,
         UserService
     ],
     bootstrap: [AppComponent]

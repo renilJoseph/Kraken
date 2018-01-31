@@ -94,7 +94,7 @@ export class JackalComponent implements OnInit {
         refreshRate : 30
       });
     }
-	
+
     deleteUser(_id: string) {
         this.userService.delete(_id).subscribe(() => { this.loadAllUsers() });
     }
