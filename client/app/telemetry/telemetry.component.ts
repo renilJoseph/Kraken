@@ -28,6 +28,7 @@ export class TelemetryComponent implements OnInit {
     });
 
     listener.subscribe((message: any) => {
+      console.log(message);
           this.messageOutput = 'Odometry Telemetry\n'
                               + 'Orientation: \t('
                               + 'w: ' + message.pose.pose.orientation.w.toFixed(3)
@@ -41,5 +42,7 @@ export class TelemetryComponent implements OnInit {
                               + ', y: ' + message.twist.twist.linear.y.toFixed(3)
                               + ', z: ' + message.twist.twist.linear.z.toFixed(3) + ')';
       });
+
+
   }
 }

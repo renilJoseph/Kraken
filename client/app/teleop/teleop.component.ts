@@ -16,10 +16,10 @@ declare var ROSLIB: any;
 export class TeleopComponent implements OnInit {
   ros: any;
   cmdVel: any;
-  speed: Number;
-  x: Number;
-  y: Number;
-  z: Number;
+  speed: number;
+  x: number;
+  y: number;
+  z: number;
   constructor(private rosService:RosService) { }
 
   ngOnInit() {
@@ -47,11 +47,11 @@ export class TeleopComponent implements OnInit {
     }
   }
 
-  buttonTeleop(x: Number, y: Number, z: Number)
+  buttonTeleop(a: number, b: number, c: number)
   {
-    this.x = x * this.speed;
-    this.y = y;
-    this.z = z;
+    this.x = a * this.speed;
+    this.y = b;
+    this.z = c;
     this.publishTeleop();
   }
 
