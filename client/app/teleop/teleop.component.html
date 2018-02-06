@@ -1,0 +1,11 @@
+<div>
+  <h2>Speed Control</h2>
+  <button class = "btn btn-normal" (click)="buttonTeleop(0, 0, 1)">&larr;</button>
+  <button class = "btn btn-normal" (click)="buttonTeleop(0.5, 0, 0)">&uarr;</button>
+  <button class = "btn btn-normal" (click)="buttonTeleop(-0.5, 0, 0)">&darr;</button>
+  <button class = "btn btn-normal" (click)="buttonTeleop(0, 0, -1)">&rarr;</button>
+</div>
+<label class="switch">
+  <input type="checkbox" (click)="changeSpeed()">
+    <span class="slider round"></span>
+</label>

@@ -9,15 +9,17 @@ declare var ROSLIB: any;
   selector: 'teleop',
   templateUrl: './teleop.component.html',
   providers: [RosService],
-  host: {'(document:keydown)': 'teleop($event)'}
+  host: {'(document:keydown)': 'teleop($event)'},
+  styleUrls: ['./teleop.component.css']
 
 })
 export class TeleopComponent implements OnInit {
   ros: any;
   cmdVel: any;
-  x: Number;
-  y: Number;
-  z: Number;
+  speed: number;
+  x: number;
+  y: number;
+  z: number;
   constructor(private rosService:RosService) { }
 
   ngOnInit() {
@@ -25,11 +27,49 @@ export class TeleopComponent implements OnInit {
     this.x = 0;
     this.y = 0;
     this.z = 0;
+    this.speed = 1;  //Speed is 1 m/s
     this.cmdVel = new ROSLIB.Topic({
         ros : this.ros,
         name : '/cmd_vel',
         messageType : 'geometry_msgs/Twist'
     });
+  }
+
+  changeSpeed()
+  {
+    if(this.speed === 1)
+    {
+      this.speed = 2;
+    }
+    else
+    {
+      this.speed = 1;
+    }
+  }
+
+  buttonTeleop(a: number, b: number, c: number)
+  {
+    this.x = a * this.speed;
+    this.y = b;
+    this.z = c;
+    this.publishTeleop();
+  }
+
+  publishTeleop()
+  {
+    let twist = new ROSLIB.Message({
+      angular : {
+        x : 0,
+        y : 0,
+        z : this.z
+      },
+      linear : {
+        x : this.x,
+        y : this.y,
+        z : this.z
+      }
+    });
+    this.cmdVel.publish(twist);
   }
 
   teleop(event: KeyboardEvent)
@@ -43,7 +83,7 @@ export class TeleopComponent implements OnInit {
         break;
       case 87:
         // up
-        this.x = 0.5;
+        this.x = 0.5 * this.speed;
         this.z = 0;
         break;
       case 65:
@@ -52,18 +92,8 @@ export class TeleopComponent implements OnInit {
         break;
       case 83:
         // down
-        this.x = -0.5;
+        this.x = -0.5 * this.speed;
         this.z = 0;
-        break;
-      case 69:
-        // strafe right
-        this.y = -0.5;
-        this.x = 0;
-        break;
-      case 81:
-        // strafe left
-        this.y = 0.5;
-        this.x = 0;
         break;
       default:
         pub = false;
@@ -71,19 +101,7 @@ export class TeleopComponent implements OnInit {
     console.log(event.keyCode);
     if(pub)
     {
-      let twist = new ROSLIB.Message({
-        angular : {
-          x : 0,
-          y : 0,
-          z : this.z
-        },
-        linear : {
-          x : this.x,
-          y : this.y,
-          z : this.z
-        }
-      });
-      this.cmdVel.publish(twist);
+      this.publishTeleop();
     }
   }
 

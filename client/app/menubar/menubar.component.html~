@@ -1,5 +1,6 @@
 <!--
 <div class="row">
+
     <div class="jumbotron">
       <div class="container">
         <div class="col-md-1"></div>
@@ -38,8 +39,14 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Robots<span class="caret"></span></a>
           <ul class="dropdown-menu">
+<<<<<<< HEAD
+            <li><a href="#" onclick="javascript:prompt('Enter Jackal socket:', '')">Jackal</a></li>
+            <li><a href="#" onclick="javascript:prompt('Enter Husky socket:', '')">Husky</a></li>
+            <li><a a href="#" onclick="javascript:prompt('Enter UR-5 socket:', '')">UR-5</a></li>
+=======
             <li><a [routerLink]="['/jackal']" onclick="javascript:prompt('Enter Jackal socket:', '')">Jackal</a></li><!--<a [routerLink]="['/jackal']">-->
             <li><a href="#" onclick="javascript:prompt('Enter Jackal socket:', '')">Husky</a></li>
+>>>>>>> upstream/ros-ui-integration
           </ul>
         </li>
         <li class="dropdown">
