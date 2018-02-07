@@ -1,4 +1,0 @@
-<menubar  (onTlm)="onTlm($event);"></menubar>
-<div class="bottompart">
-    <router-outlet></router-outlet>
-</div>
