@@ -25,6 +25,8 @@ import { SettingsComponent } from './settings/index';
 import { ChangeNameComponent } from './settings/change-name/index';
 import { ChangeUsernameComponent } from './settings/change-username/index';
 import { ChangePasswordComponent } from './settings/change-password/index';
+import { HuskyComponent } from './husky/index';
+
 @NgModule({
     imports: [
         BrowserModule,
@@ -49,7 +51,8 @@ import { ChangePasswordComponent } from './settings/change-password/index';
         SettingsComponent,
         ChangeNameComponent,
         ChangeUsernameComponent,
-        ChangePasswordComponent
+        ChangePasswordComponent,
+        HuskyComponent
     ],
     providers: [
         customHttpProvider,

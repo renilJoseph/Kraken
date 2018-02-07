@@ -4,6 +4,7 @@ import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
 import { AuthComponent } from './auth/index';
 import { JackalComponent } from './jackal/index';
+import { HuskyComponent } from './husky/index';
 import { WelcomeComponent } from './welcome/index';
 import { SettingsComponent } from './settings/index';
 import { ChangeNameComponent } from './settings/change-name/index';
@@ -16,10 +17,11 @@ const appRoutes: Routes = [
       children: [
         {path: '', component: WelcomeComponent},
         {path: 'jackal', component: JackalComponent},
-	{path: 'settings', component: SettingsComponent},
-	{path: 'settings/change-password', component: ChangePasswordComponent},
-	{path: 'settings/change-name', component: ChangeNameComponent},
-	{path: 'settings/change-username', component: ChangeUsernameComponent}
+        {path: 'husky', component: HuskyComponent},
+      	{path: 'settings', component: SettingsComponent},
+      	{path: 'settings/change-password', component: ChangePasswordComponent},
+      	{path: 'settings/change-name', component: ChangeNameComponent},
+      	{path: 'settings/change-username', component: ChangeUsernameComponent}
       ]
     },
     { path: 'auth', component: AuthComponent,
