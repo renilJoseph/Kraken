@@ -22,6 +22,9 @@
             '@angular/http/testing': 'npm:@angular/http/bundles/http-testing.umd.js',
             '@angular/router': 'npm:@angular/router/bundles/router.umd.js',
             '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
+			'ngx-modialog': 'npm:ngx-modialog/bundle/ngx-modialog.rollup.umd.min.js',
+			'ngx-modialog/plugins/bootstrap': 'npm:ngx-modialog/plugins/bootstrap/bundle/ngx-modialog-bootstrap.rollup.umd.min.js',
+
 
             // other libraries
             'rxjs': 'npm:rxjs'

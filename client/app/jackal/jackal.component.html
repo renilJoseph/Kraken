@@ -1,13 +1,10 @@
 <div class="row" ><!--style="border:3px solid black"-->
     <div class="col-sm-12 nopadding">
       <div [ngClass]="this.hideservice.getIt() != false ? 'col-md-8 col-md-offset-0':'col-md-12 col-md-offset-0'"><!-- [ngClass]="show != false ? 'col-md-8 col-md-offset-0':'col-md-12 col-md-offset-0'" class="col-md-8 col-md-offset-0" -->
-	      <img [src]="image1">
+	    <img [src]="image1">
         <div id="viewer"></div>
-        <input type="number" id="number" #xOffset>
-        <input type="number" id="number"  #yOffset>
-        <input type="number" id="number" #Width>
-        <input type="number" id="number"  #Height>
-          <button (click)="resizeWindow(xOffset.value, yOffset.value, Width.value, Height.value)">Change Viewer Size (x, y, Width, Height)</button><br />
+        <button (click)="resizeBox()">Change Viewer Size (x, y, Width, Height)</button>
+		<button (click)="topicBox()">Change Topic</button><br />
           <teleop></teleop>
           <!--<ul>
               <li *ngFor="let user of users">
