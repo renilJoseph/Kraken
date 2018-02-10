@@ -1,4 +1,5 @@
 import {Injectable} from '@angular/core';
+import { appConfig } from '../app.config';
 declare var ROSLIB: any;
 
 @Injectable()
@@ -11,7 +12,7 @@ export class RosService{
     if(!this.ros)
     {
       this.ros = new ROSLIB.Ros({
-          url : 'ws://jackal.mobile.asu.edu:9090'
+          url : 'ws://' + appConfig.robotUrl + ':9090'
       });
 
       this.ros.on('connection', function() {

@@ -28,13 +28,17 @@ import { ChangePasswordComponent } from './settings/change-password/index';
 import { ChangeEmailComponent } from './settings/change-email/index';
 import { ForgotPasswordComponent } from './forgot-password/index';
 import { HuskyComponent } from './husky/index';
+import { ModalModule } from 'ngx-modialog';
+import { BootstrapModalModule } from 'ngx-modialog/plugins/bootstrap';
 
 @NgModule({
     imports: [
         BrowserModule,
         FormsModule,
         HttpModule,
-        routing
+        routing,
+    	ModalModule.forRoot(),
+   	BootstrapModalModule
     ],
     declarations: [
         AppComponent,
