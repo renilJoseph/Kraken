@@ -1,7 +1,7 @@
 <div class="row" ><!--style="border:3px solid black"-->
     <div class="col-sm-12 nopadding">
-      <div style="border:3px solid black" [ngClass]="this.hideservice.getIt() != false ? 'col-md-8 col-md-offset-0':'col-md-12 col-md-offset-0'"><!-- [ngClass]="show != false ? 'col-md-8 col-md-offset-0':'col-md-12 col-md-offset-0'" class="col-md-8 col-md-offset-0" -->
-	<!--<img [src]="image1"> -->
+      <div [ngClass]="this.hideservice.getIt() != false ? 'col-md-8 col-md-offset-0':'col-md-12 col-md-offset-0'"><!-- [ngClass]="show != false ? 'col-md-8 col-md-offset-0':'col-md-12 col-md-offset-0'" class="col-md-8 col-md-offset-0" -->
+	      <img [src]="image1">
         <div id="viewer"></div>
         <input type="number" id="number" #xOffset>
         <input type="number" id="number"  #yOffset>

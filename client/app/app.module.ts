@@ -27,6 +27,8 @@ import { ChangeUsernameComponent } from './settings/change-username/index';
 import { ChangePasswordComponent } from './settings/change-password/index';
 import { ChangeEmailComponent } from './settings/change-email/index';
 import { ForgotPasswordComponent } from './forgot-password/index';
+import { HuskyComponent } from './husky/index';
+
 @NgModule({
     imports: [
         BrowserModule,
@@ -53,7 +55,8 @@ import { ForgotPasswordComponent } from './forgot-password/index';
         ChangeUsernameComponent,
         ChangePasswordComponent,
 	ChangeEmailComponent,
-	ForgotPasswordComponent
+	ForgotPasswordComponent,
+        HuskyComponent
     ],
     providers: [
         customHttpProvider,

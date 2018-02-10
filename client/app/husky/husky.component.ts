@@ -11,31 +11,31 @@ declare var MJPEGCANVAS: any;
 
 @Component({
     moduleId: module.id,
-    templateUrl: 'jackal.component.html',
+    templateUrl: 'husky.component.html',
     providers: [RosService]
 })
 
-export class JackalComponent implements OnInit, DoCheck {
+export class HuskyComponent implements OnInit {
     ros: any;
     currentUser: User;
     users: User[] = [];
     show: boolean;
-    private image1 = 'http://192.168.1.147:8080/stream?topic=/image&width=900&height=550'
+    private image1 = 'http://husky.mobile.asu.edu:8080/stream?topic=/kinect2/hd/image_color&width=900&height=550'
     private large = false;
     public innerWidth: any;
     public innerHeight: any;
     private calcWidth: any;
     private calcHeight: any;
     resizeTimeout: any;
-    /*@ViewChild('TLM') TLM:ElementRef
+    @ViewChild('TLM') TLM:ElementRef
     ngDoCheck() {
-    	if(this.TLM.nativeElement.classList.contains('open')) {
+    	if(this.hideservice.getIt()) {
 		this.resizeViewer(.635);
     	}
 	else {
 		this.resizeViewer(.95);
 	}
-    }*/
+    }
 
     constructor(private userService: UserService, private rosService:RosService, public hideservice: HideService) {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
@@ -67,22 +67,22 @@ export class JackalComponent implements OnInit, DoCheck {
 		//if the calculated width is wider than what is available, use the calculated height
 		if(this.calcWidth > (widthMultiplier*this.innerWidth))
 		{
-			this.image1 = 'http://192.168.1.147:8080/stream?topic=/image&width=' + (widthMultiplier*this.innerWidth).toFixed() + '&height=' + this.calcHeight.toFixed();
+			this.image1 = 'http://husky.mobile.asu.edu:8080/stream?topic=/kinect2/hd/image_color&width=' + (widthMultiplier*this.innerWidth).toFixed() + '&height=' + this.calcHeight.toFixed();
 		}
 		else
 		{
-			this.image1 = 'http://192.168.1.147:8080/stream?topic=/image&width=' + this.calcWidth.toFixed() + '&height=' + (this.innerHeight - 180);
+			this.image1 = 'http://husky.mobile.asu.edu:8080/stream?topic=/kinect2/hd/image_color&width=' + this.calcWidth.toFixed() + '&height=' + (this.innerHeight - 180);
 		}
-	} 
+	}
 
     ngOnInit() {
       this.loadAllUsers();
       this.ros = this.rosService.getROS();
       this.innerWidth = window.innerWidth;
       this.innerHeight = window.innerHeight;
-      this.image1 = 'http://192.168.1.147:8080/stream?topic=/image&width=' + (.635*this.innerWidth).toFixed() + '&height=' + ((.635*this.innerWidth)*9/16).toFixed();
+      this.image1 = 'http://husky.mobile.asu.edu:8080/stream?topic=/kinect2/hd/image_color&width=' + (.635*this.innerWidth).toFixed() + '&height=' + ((.635*this.innerWidth)*9/16).toFixed();
 
-	/*
+      /*
       // Create the main viewer.
       var viewer = new MJPEGCANVAS.Viewer({
         divID : 'viewer',
@@ -92,9 +92,10 @@ export class JackalComponent implements OnInit, DoCheck {
         quality : 90,
         topic : '/kinect2/qhd/image_color',
         refreshRate : 30
-      }); */
+      });
+      */
     }
-	
+
     deleteUser(_id: string) {
         this.userService.delete(_id).subscribe(() => { this.loadAllUsers() });
     }
