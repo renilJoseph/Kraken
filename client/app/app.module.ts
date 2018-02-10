@@ -25,6 +25,8 @@ import { SettingsComponent } from './settings/index';
 import { ChangeNameComponent } from './settings/change-name/index';
 import { ChangeUsernameComponent } from './settings/change-username/index';
 import { ChangePasswordComponent } from './settings/change-password/index';
+import { ChangeEmailComponent } from './settings/change-email/index';
+import { ForgotPasswordComponent } from './forgot-password/index';
 @NgModule({
     imports: [
         BrowserModule,
@@ -49,7 +51,9 @@ import { ChangePasswordComponent } from './settings/change-password/index';
         SettingsComponent,
         ChangeNameComponent,
         ChangeUsernameComponent,
-        ChangePasswordComponent
+        ChangePasswordComponent,
+	ChangeEmailComponent,
+	ForgotPasswordComponent
     ],
     providers: [
         customHttpProvider,
