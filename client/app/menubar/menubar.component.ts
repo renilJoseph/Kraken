@@ -24,7 +24,6 @@ export class MenubarComponent implements OnInit{
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     this.show = hideservice.getIt();
     this.socket = "";
-    //this.hideservice.toggle$.subscribe((toggle:boolean) => this.show = toggle)
   }
 
   showTlm() {
@@ -57,8 +56,5 @@ export class MenubarComponent implements OnInit{
     });
   }
 
-  ngOnInit(){
-
-	//this.hideservice.getIt().subscribe((showTelemetry:any) => this.show = showTelemetry);
-  }
+  ngOnInit(){ }
 }

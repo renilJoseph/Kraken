@@ -1,27 +1,3 @@
-<!--
-<div class="row">
-
-    <div class="jumbotron">
-      <div class="container">
-        <div class="col-md-1"></div>
-        <div class="col-md-1"></div>
-        <div class="col-md-1"></div>
-        <div class="col-md-1"></div>
-        <div class="col-md-1"></div>
-        <div class="col-md-1"></div>
-        <div class="col-md-1"></div>
-        <div class="col-md-1"></div>
-        <div class="col-md-2">
-          <p>Hi {{currentUser.firstName}}!</p>
-        </div>
-        <div class="col-md-2 col-md-offset-11">
-            <a [routerLink]="['/auth/login']">
-                <button class="btn btn-default LoginButton">Logout</button>
-            </a>
-        </div>
-    </div>
-  </div>
--->
 <nav class = "navbar navbar-default">
   <div class = "container-fluid">
     <div class="navbar-header">
@@ -31,7 +7,7 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">CRS Robot Lab</a>
+      <a class="navbar-brand" href="#">CRS Robotics Lab</a>
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -39,28 +15,28 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Robots<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a [routerLink]="['/jackal']" onclick="javascript:prompt('Enter Jackal socket:', '')">Jackal</a></li><!--<a [routerLink]="['/jackal']">-->
-            <li><a href="#" onclick="javascript:prompt('Enter Jackal socket:', '')">Husky</a></li>
+            <li><a (click)="getWebSocket('/jackal')">Jackal <i class="fab fa-android" style="margin-left:50px; margin-right:0px;"></i></a></li><!--<a [routerLink]="['/jackal']">-->
+            <li><a (click)="getWebSocket('/husky')">Husky <i class="fab fa-android" style="margin-left:50px; margin-right:0px;"></i></a></li>
           </ul>
         </li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sensors<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Kinect</a></li>
+            <li><a href="#">Kinect <i class="fab fa-xbox" style="margin-left:55px; margin-right:0px;"></i></a></li>
           </ul>
         </li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hi {{currentUser.firstName}}!<span class="caret"></span></a>
-          <ul class="dropdown-menu">
-	    <li><a [routerLink]="['/settings']">Settings</a></li>
-            <li><a [routerLink]="['/auth/login']">Logout</a></li>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hi {{currentUser.username}}!<span class="caret"></span></a>
+          <ul class="dropdown-menu" style="margin-right:0px;">
+	    <li><a [routerLink]="['/settings']">Settings <i class="fas fa-cogs" style="margin-left:50px; margin-right:0px;"></i></a></li>
+            <li><a [routerLink]="['/auth/login']">Logout <i class="fas fa-sign-out-alt" style="margin-left:55px; margin-right:0px;"></i></a></li>
           </ul>
         </li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-	<li><button *ngIf="!show" (click)="hideservice.showIt(); show = hideservice.getIt();" class="btn btn-default" style="margin-top:15px; margin-left:10px; width:5em;">Show</button></li><!-- [disabled]="showTlm" needed if two buttons wanted (click)="ShowButton(true)" -->
-        <li><button *ngIf="show" (click)="hideservice.hideIt(); show = hideservice.getIt();" class="btn btn-default" style="margin-top:15px; margin-left:10px; width:5em;">Hide</button></li> <!-- [disabled]="!showTlm" needed if two buttons wanted (click)="HideButton(false)"-->
+	      <li><button *ngIf="!show" (click)="hideservice.showIt(); show = hideservice.getIt();" class="btn btn-default" style="margin-top:15px; margin-left:10px; width:5em;">Show</button></li>
+        <li><button *ngIf="show" (click)="hideservice.hideIt(); show = hideservice.getIt();" class="btn btn-default" style="margin-top:15px; margin-left:10px; width:5em;">Hide</button></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

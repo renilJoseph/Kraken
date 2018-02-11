@@ -11,9 +11,15 @@
 }
 
 .navbar-default a:hover{
-  color: lightgray;
+  color: black;
 }
 
 .dropdown-menu a{
-  color: black;
+  color: white;
 }
+
+.dropdown-menu {
+  background-color: blue;
+}
+
+
