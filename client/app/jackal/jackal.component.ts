@@ -85,18 +85,6 @@ export class JackalComponent implements OnInit {
       this.innerHeight = window.innerHeight;
       this.image1 = 'http://' + appConfig.robotUrl + ':8080/stream?topic=' + this.topic + '&width=' + (.635*this.innerWidth).toFixed() + '&height=' + ((.635*this.innerWidth)*9/16).toFixed();
 
-      /*
-      // Create the main viewer.
-      var viewer = new MJPEGCANVAS.Viewer({
-        divID : 'viewer',
-        host : 'localhost',
-        width : 900,
-        height : 497,
-        quality : 90,
-        topic : '/kinect2/qhd/image_color',
-        refreshRate : 30
-      });
-      */
     }
 
     deleteUser(_id: string) {
