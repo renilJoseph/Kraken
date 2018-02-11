@@ -5,7 +5,6 @@ declare var ROSLIB: any;
 @Injectable()
 export class RosService{
   private ros: any;
-
   constructor(){}
   //ws://10.143.10.186:9090
   public getROS(): any{
@@ -29,4 +28,9 @@ export class RosService{
     }
     return this.ros;
   }
+
+  public setSocketAddress(input: string){
+    appConfig.robotUrl = input;
+  }
+
 }
