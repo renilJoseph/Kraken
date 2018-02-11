@@ -20,23 +20,6 @@ export class HomeComponent implements OnInit {
     users: User[] = [];
     constructor(private userService: UserService, private rosService:RosService) {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-	this.show = true;
-    }
-    // event listener/handler for telemetry panel (listens to child component menubar button)
-    onTlm(value: boolean) {
-	if (value)
-		this.show = true;
-		// size to normal
-		//this.viewer.width = 900;
-	if (!value)
-		this.show = false;
-		// "fullscreen"
-		//this.viewer.width = '1200';
-
-    }
-    changeWidthBig() {
-	alert('Function Called');
-	document.getElementById('canvas').style.width= "1400px";
     }
     ngOnInit() {
     }

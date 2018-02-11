@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!--
 <div class="row">
     <div class="jumbotron">
@@ -21,6 +22,8 @@
     </div>
   </div>
 -->
+=======
+>>>>>>> upstream/ros-ui-integration
 <nav class = "navbar navbar-default">
   <div class = "container-fluid">
     <div class="navbar-header">
@@ -30,7 +33,7 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">CRS Robot Lab</a>
+      <a class="navbar-brand" href="#">CRS Robotics Lab</a>
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -38,8 +41,8 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Robots<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a [routerLink]="['/jackal']" onclick="javascript:prompt('Enter Jackal socket:', '')">Jackal</a></li><!--<a [routerLink]="['/jackal']">-->
-            <li><a href="#" onclick="javascript:prompt('Enter Jackal socket:', '')">Husky</a></li>
+            <li><a (click)="getWebSocket('/jackal')">Jackal</a></li><!--<a [routerLink]="['/jackal']">-->
+            <li><a (click)="getWebSocket('/husky')">Husky</a></li>
           </ul>
         </li>
         <li class="dropdown">
@@ -49,7 +52,7 @@
           </ul>
         </li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hi {{currentUser.firstName}}!<span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hi {{currentUser.username}}!<span class="caret"></span></a>
           <ul class="dropdown-menu">
 	    <li><a [routerLink]="['/settings']">Settings</a></li>
             <li><a [routerLink]="['/auth/login']">Logout</a></li>
@@ -58,7 +61,7 @@
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-	<li><button *ngIf="!show" (click)="hideservice.showIt(); show = hideservice.getIt();" class="btn btn-default" style="margin-top:15px; margin-left:10px; width:5em;">Show</button></li><!-- [disabled]="showTlm" needed if two buttons wanted (click)="ShowButton(true)" -->
+	      <li><button *ngIf="!show" (click)="hideservice.showIt(); show = hideservice.getIt();" class="btn btn-default" style="margin-top:15px; margin-left:10px; width:5em;">Show</button></li><!-- [disabled]="showTlm" needed if two buttons wanted (click)="ShowButton(true)" -->
         <li><button *ngIf="show" (click)="hideservice.hideIt(); show = hideservice.getIt();" class="btn btn-default" style="margin-top:15px; margin-left:10px; width:5em;">Hide</button></li> <!-- [disabled]="!showTlm" needed if two buttons wanted (click)="HideButton(false)"-->
       </ul>
     </div><!-- /.navbar-collapse -->

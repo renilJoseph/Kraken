@@ -1,8 +1,24 @@
 <div class="container">
   <div class = "row">
     <div class = "col-md-6">
-      <h1>Change name coming next iteration!</h1>
-	<a [routerLink]="['/settings']"><button>Back</button></a>
+	    
+     <h2>Change First and Last Name</h2>
+	<form name="form" (ngSubmit)="f.form.valid && changeName()" #f="ngForm" novalidate>
+		<div class="form-group" [ngClass]="{ 'has-error': f.submitted && !firstName.valid }">
+		    <label for="firstName">First Name</label>
+		    <input type="text" class="form-control" name="firstName" [(ngModel)]="model.firstName" #firstName="ngModel" style="width: 300px;" required />
+		    <div *ngIf="f.submitted && !firstName.valid" class="help-block">First Name is required</div>
+		</div>
+		<div class="form-group" [ngClass]="{ 'has-error': f.submitted && !lastName.valid }">
+		    <label for="lastName">Last Name</label>
+		    <input type="text" class="form-control" name="lastName" [(ngModel)]="model.lastName" #lastName="ngModel" style="width: 300px;" required />
+		    <div *ngIf="f.submitted && !lastName.valid" class="help-block">Last Name is required</div>
+		</div>
+		<div class="form-group">
+		<button [disabled]="loading" class="btn btn-primary">Submit</button>
+		<a [routerLink]="['/settings']"><button>Cancel</button></a>
+		</div>
+	</form>
     </div>
   </div>
 </div>

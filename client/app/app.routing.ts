@@ -4,11 +4,14 @@ import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
 import { AuthComponent } from './auth/index';
 import { JackalComponent } from './jackal/index';
+import { HuskyComponent } from './husky/index';
 import { WelcomeComponent } from './welcome/index';
 import { SettingsComponent } from './settings/index';
 import { ChangeNameComponent } from './settings/change-name/index';
 import { ChangeUsernameComponent } from './settings/change-username/index';
 import { ChangePasswordComponent } from './settings/change-password/index';
+import { ChangeEmailComponent } from './settings/change-email/index';
+import { ForgotPasswordComponent } from './forgot-password/index';
 import { AuthGuard } from './_guards/index';
 
 const appRoutes: Routes = [
@@ -16,16 +19,19 @@ const appRoutes: Routes = [
       children: [
         {path: '', component: WelcomeComponent},
         {path: 'jackal', component: JackalComponent},
+	{path: 'husky', component: HuskyComponent },
 	{path: 'settings', component: SettingsComponent},
 	{path: 'settings/change-password', component: ChangePasswordComponent},
 	{path: 'settings/change-name', component: ChangeNameComponent},
-	{path: 'settings/change-username', component: ChangeUsernameComponent}
+	{path: 'settings/change-username', component: ChangeUsernameComponent},
+	{path: 'settings/change-email', component: ChangeEmailComponent}
       ]
     },
     { path: 'auth', component: AuthComponent,
       children: [
         { path: 'login', component: LoginComponent },
-        { path: 'register', component: RegisterComponent }
+        { path: 'register', component: RegisterComponent },
+	{ path: 'forgot', component: ForgotPasswordComponent }
       ]
     },
     // otherwise redirect to home

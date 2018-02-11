@@ -4,10 +4,10 @@ import { User } from '../../_models/index';
 import { Router } from '@angular/router';
 @Component({
   moduleId: module.id,
-  templateUrl: 'change-username.component.html',
+  templateUrl: 'change-email.component.html',
 })
 
-export class ChangeUsernameComponent {
+export class ChangeEmailComponent {
   model: User;
   currentUser: User;
   loading = false;
@@ -19,12 +19,12 @@ export class ChangeUsernameComponent {
   }
 
   
-  changeUsername() {
+  changeEmail() {
       this.loading = true;
       this.userService.update(this.model)
           .subscribe(
               data => {
-                  this.alertService.success('Username change successful.', true);
+                  this.alertService.success('Email change successful.', true);
 		  localStorage.setItem('currentUser', JSON.stringify(this.model));
 		  this.router.navigate(['/settings']);
               },

@@ -25,6 +25,13 @@ import { SettingsComponent } from './settings/index';
 import { ChangeNameComponent } from './settings/change-name/index';
 import { ChangeUsernameComponent } from './settings/change-username/index';
 import { ChangePasswordComponent } from './settings/change-password/index';
+<<<<<<< HEAD
+import { ChangeEmailComponent } from './settings/change-email/index';
+import { ForgotPasswordComponent } from './forgot-password/index';
+=======
+import { HuskyComponent } from './husky/index';
+
+>>>>>>> 5d79ac4f227f72d94aa879e0e709da8e1add0d05
 @NgModule({
     imports: [
         BrowserModule,
@@ -46,9 +53,16 @@ import { ChangePasswordComponent } from './settings/change-password/index';
         TelemetryComponent,
         JackalComponent,
         WelcomeComponent,
-	ChangeNameComponent,
-	ChangeUsernameComponent,
-	ChangePasswordComponent
+        SettingsComponent,
+        ChangeNameComponent,
+        ChangeUsernameComponent,
+        ChangePasswordComponent,
+<<<<<<< HEAD
+	ChangeEmailComponent,
+	ForgotPasswordComponent
+=======
+        HuskyComponent
+>>>>>>> 5d79ac4f227f72d94aa879e0e709da8e1add0d05
     ],
     providers: [
         customHttpProvider,
@@ -56,7 +70,7 @@ import { ChangePasswordComponent } from './settings/change-password/index';
         AlertService,
 	HideService,
         AuthenticationService,
-	MenubarComponent,
+	      MenubarComponent,
         UserService
     ],
     bootstrap: [AppComponent]
