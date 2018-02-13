@@ -77,7 +77,7 @@ export class TeleopComponent implements OnInit {
     let pub = true;
     //Set x, y, z according to keypress
     switch(event.keyCode){
-      case 68:
+      case 65:
         // turn left
         this.z = 1;
         break;
@@ -86,7 +86,7 @@ export class TeleopComponent implements OnInit {
         this.x = 0.5 * this.speed;
         this.z = 0;
         break;
-      case 65:
+      case 68:
         // turn right
         this.z = -1;
         break;

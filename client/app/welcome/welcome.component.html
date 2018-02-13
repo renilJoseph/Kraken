@@ -1,18 +1,12 @@
-<head>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-</head>
+<div class="container">
+  <div class = "row">
+    <div class = "col-md-6">
+      <h1>Please select a robot to operate</h1>
 
-<body>
-  <div class="container">
-    <div class = "row">
-      <div class = "col-md-6">
-        <h1>Please select a robot to operate</h1>
-
-        <div class="container">
-          <button type="button" class="btn btn-default btn-lg" (click)="getWebSocket('/jackal')"><i class="fa	glyphicon glyphicon-cog fa-fw" style="font-size:20px;"></i> Jackal</button>
-          <button type="button" class="btn btn-default btn-lg" (click)="getWebSocket('/husky')"><i class="fa	glyphicon glyphicon-cog fa-fw" style="font-size:20px;"></i> Husky</button>
-        </div>
+      <div class="container">
+        <button type="button" class="btn btn-default btn-lg" (click)="getWebSocket('/jackal')"><i class="fas fa-truck" style="margin-right:10px;"></i> Jackal</button>
+        <button type="button" class="btn btn-default btn-lg" (click)="getWebSocket('/husky')"><i class="fas fa-truck" style="margin-right:10px;"></i> Husky</button>
       </div>
     </div>
   </div>
-</body>
+</div>

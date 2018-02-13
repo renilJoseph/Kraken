@@ -18,8 +18,8 @@ import { RegisterComponent } from './register/index';
 import { TeleopComponent } from './teleop/index';
 import { AuthComponent } from './auth/index';
 import { MenubarComponent } from './menubar/index';
-import { TelemetryComponent } from './telemetry/index';
 import { JackalComponent } from './jackal/index';
+import { JackalTelemetryComponent } from './jackal/index'
 import { WelcomeComponent } from './welcome/index';
 import { SettingsComponent } from './settings/index';
 import { ChangeNameComponent } from './settings/change-name/index';
@@ -28,6 +28,7 @@ import { ChangePasswordComponent } from './settings/change-password/index';
 import { ChangeEmailComponent } from './settings/change-email/index';
 import { ForgotPasswordComponent } from './forgot-password/index';
 import { HuskyComponent } from './husky/index';
+import { HuskyTelemetryComponent } from './husky/index'
 import { ModalModule } from 'ngx-modialog';
 import { BootstrapModalModule } from 'ngx-modialog/plugins/bootstrap';
 
@@ -37,8 +38,8 @@ import { BootstrapModalModule } from 'ngx-modialog/plugins/bootstrap';
         FormsModule,
         HttpModule,
         routing,
-    	ModalModule.forRoot(),
-   	BootstrapModalModule
+        ModalModule.forRoot(),
+        BootstrapModalModule
     ],
     declarations: [
         AppComponent,
@@ -51,22 +52,23 @@ import { BootstrapModalModule } from 'ngx-modialog/plugins/bootstrap';
         TeleopComponent,
         AuthComponent,
         MenubarComponent,
-        TelemetryComponent,
         JackalComponent,
+        JackalTelemetryComponent,
         WelcomeComponent,
         SettingsComponent,
         ChangeNameComponent,
         ChangeUsernameComponent,
         ChangePasswordComponent,
-	ChangeEmailComponent,
-	ForgotPasswordComponent,
-        HuskyComponent
+        ChangeEmailComponent,
+        ForgotPasswordComponent,
+        HuskyComponent,
+        HuskyTelemetryComponent
     ],
     providers: [
         customHttpProvider,
         AuthGuard,
         AlertService,
-	HideService,
+        HideService,
         AuthenticationService,
 	      MenubarComponent,
         UserService

@@ -22,7 +22,7 @@ export class JackalComponent implements OnInit {
     currentUser: User;
     users: User[] = [];
     show: boolean;
-	topic = '/image';
+	topic = '/kinect2/qhd/image_color';
     private image1 = 'http://' + appConfig.robotUrl + ':8080/stream?topic=' + this.topic + '&width=900&height=550'
     private large = false;
     public innerWidth: any;
@@ -97,7 +97,7 @@ export class JackalComponent implements OnInit {
 
     resizeWindow(input: string)
     {
-	  
+
 	  var inputs = input.split(',').map(el => {
   		let n = Number(el);
   		return isNaN(n) ? el : n;
@@ -134,7 +134,7 @@ export class JackalComponent implements OnInit {
 		       dialogRef.result.then( result => this.resizeWindow(result))
 		   });
 	}
-	
+
 	changeTopic(topicName: any)
 	{
 		this.topic = topicName;
@@ -142,7 +142,7 @@ export class JackalComponent implements OnInit {
 		{
 			this.resizeViewer(.635);
     	}
-		else 
+		else
 		{
 			this.resizeViewer(.95);
 		}

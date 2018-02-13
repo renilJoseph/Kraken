@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { RosService } from '../_services/index';
+import { RosService } from '../../_services/index';
 
 declare var ROSLIB: any;
 
 @Component({
   moduleId: module.id,
-  selector: 'telemetry',
-  templateUrl: 'telemetry.component.html',
+  selector: 'husky-telemetry',
+  templateUrl: 'husky-telemetry.component.html',
   providers: [RosService]
 })
 
-export class TelemetryComponent implements OnInit {
+export class HuskyTelemetryComponent implements OnInit {
   ros: any;
-  messageOutput: string;
+  odometryOutput: string;
   constructor(private rosService: RosService){
 
   }
@@ -29,8 +29,7 @@ export class TelemetryComponent implements OnInit {
 
     listener.subscribe((message: any) => {
       console.log(message);
-          this.messageOutput = 'Odometry Telemetry\n'
-                              + 'Orientation: \t('
+          this.odometryOutput ='Orientation: \t('
                               + 'w: ' + message.pose.pose.orientation.w.toFixed(3)
                               + ', x: ' + message.pose.pose.orientation.x.toFixed(3)
                               + ', y: ' + message.pose.pose.orientation.y.toFixed(3)
