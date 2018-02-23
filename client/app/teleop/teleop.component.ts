@@ -35,15 +35,32 @@ export class TeleopComponent implements OnInit {
     });
   }
 
-  changeSpeed()
+  changeSpeed(input: number)
   {
-    if(this.speed === 1)
+    this.speed = input;
+    let off = document.getElementById('switch-off');
+    let slow = document.getElementById('switch-slow');
+    let fast = document.getElementById('switch-fast');
+    off.style.backgroundColor = 'rgb(221, 221, 221)';
+    off.style.color = 'black';
+    slow.style.backgroundColor = 'rgb(221, 221, 221)';
+    slow.style.color = 'black';
+    fast.style.backgroundColor = 'rgb(221, 221, 221)';
+    fast.style.color = 'black';
+    if(input == 0)
     {
-      this.speed = 2;
+      off.style.backgroundColor = '#2196F3';
+      off.style.color = 'white';
     }
-    else
+    else if(input == 1)
     {
-      this.speed = 1;
+      slow.style.backgroundColor = '#2196F3';
+      slow.style.color = 'white';
+    }
+    else if(input == 2)
+    {
+      fast.style.backgroundColor = '#2196F3';
+      fast.style.color = 'white';
     }
   }
 
@@ -77,20 +94,20 @@ export class TeleopComponent implements OnInit {
     let pub = true;
     //Set x, y, z according to keypress
     switch(event.keyCode){
-      case 65:
+      case 37:
         // turn left
         this.z = 1;
         break;
-      case 87:
+      case 38:
         // up
         this.x = 0.5 * this.speed;
         this.z = 0;
         break;
-      case 68:
+      case 39:
         // turn right
         this.z = -1;
         break;
-      case 83:
+      case 40:
         // down
         this.x = -0.5 * this.speed;
         this.z = 0;
