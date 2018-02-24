@@ -19,19 +19,12 @@ const appRoutes: Routes = [
       children: [
         {path: '', component: WelcomeComponent},
         {path: 'jackal', component: JackalComponent},
-<<<<<<< HEAD
+	{path: 'husky', component: HuskyComponent },
 	{path: 'settings', component: SettingsComponent},
 	{path: 'settings/change-password', component: ChangePasswordComponent},
 	{path: 'settings/change-name', component: ChangeNameComponent},
 	{path: 'settings/change-username', component: ChangeUsernameComponent},
 	{path: 'settings/change-email', component: ChangeEmailComponent}
-=======
-        {path: 'husky', component: HuskyComponent},
-      	{path: 'settings', component: SettingsComponent},
-      	{path: 'settings/change-password', component: ChangePasswordComponent},
-      	{path: 'settings/change-name', component: ChangeNameComponent},
-      	{path: 'settings/change-username', component: ChangeUsernameComponent}
->>>>>>> 5d79ac4f227f72d94aa879e0e709da8e1add0d05
       ]
     },
     { path: 'auth', component: AuthComponent,

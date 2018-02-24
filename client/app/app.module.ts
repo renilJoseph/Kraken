@@ -11,24 +11,22 @@ import { AlertComponent } from './_directives/index';
 import { AuthGuard } from './_guards/index';
 import { AlertService, AuthenticationService, UserService, HideService } from './_services/index';
 import { HomeComponent } from './home/index';
-import { SensorSelectComponent } from './sensor-select/index';
-import { RobotSelectComponent } from './robot-select/index';
-import { LoginComponent } from './login/index';
-import { RegisterComponent } from './register/index';
-import { TeleopComponent } from './teleop/index';
+import { LoginComponent } from './auth/login/index';
+import { RegisterComponent } from './auth/register/index';
+import { TeleopComponent } from './home/teleop/index';
 import { AuthComponent } from './auth/index';
-import { MenubarComponent } from './menubar/index';
-import { JackalComponent } from './jackal/index';
-import { JackalTelemetryComponent } from './jackal/index'
-import { WelcomeComponent } from './welcome/index';
-import { SettingsComponent } from './settings/index';
-import { ChangeNameComponent } from './settings/change-name/index';
-import { ChangeUsernameComponent } from './settings/change-username/index';
-import { ChangePasswordComponent } from './settings/change-password/index';
-import { ChangeEmailComponent } from './settings/change-email/index';
-import { ForgotPasswordComponent } from './forgot-password/index';
-import { HuskyComponent } from './husky/index';
-import { HuskyTelemetryComponent } from './husky/index'
+import { MenubarComponent } from './home/menubar/index';
+import { JackalComponent } from './home/jackal/index';
+import { JackalTelemetryComponent } from './home/jackal/index'
+import { WelcomeComponent } from './home/welcome/index';
+import { SettingsComponent } from './home/settings/index';
+import { ChangeNameComponent } from './home/settings/change-name/index';
+import { ChangeUsernameComponent } from './home/settings/change-username/index';
+import { ChangePasswordComponent } from './home/settings/change-password/index';
+import { ChangeEmailComponent } from './home/settings/change-email/index';
+import { ForgotPasswordComponent } from './auth/forgot-password/index';
+import { HuskyComponent } from './home/husky/index';
+import { HuskyTelemetryComponent } from './home/husky/index'
 import { ModalModule } from 'ngx-modialog';
 import { BootstrapModalModule } from 'ngx-modialog/plugins/bootstrap';
 
@@ -47,8 +45,6 @@ import { BootstrapModalModule } from 'ngx-modialog/plugins/bootstrap';
         HomeComponent,
         LoginComponent,
         RegisterComponent,
-        RobotSelectComponent,
-        SensorSelectComponent,
         TeleopComponent,
         AuthComponent,
         MenubarComponent,

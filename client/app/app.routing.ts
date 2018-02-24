@@ -1,17 +1,17 @@
 ﻿import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/index';
-import { LoginComponent } from './login/index';
-import { RegisterComponent } from './register/index';
+import { LoginComponent } from './auth/login/index';
+import { RegisterComponent } from './auth/register/index';
 import { AuthComponent } from './auth/index';
-import { JackalComponent } from './jackal/index';
-import { HuskyComponent } from './husky/index';
-import { WelcomeComponent } from './welcome/index';
-import { SettingsComponent } from './settings/index';
-import { ChangeNameComponent } from './settings/change-name/index';
-import { ChangeUsernameComponent } from './settings/change-username/index';
-import { ChangePasswordComponent } from './settings/change-password/index';
-import { ChangeEmailComponent } from './settings/change-email/index';
-import { ForgotPasswordComponent } from './forgot-password/index';
+import { JackalComponent } from './home/jackal/index';
+import { HuskyComponent } from './home/husky/index';
+import { WelcomeComponent } from './home/welcome/index';
+import { SettingsComponent } from './home/settings/index';
+import { ChangeNameComponent } from './home/settings/change-name/index';
+import { ChangeUsernameComponent } from './home/settings/change-username/index';
+import { ChangePasswordComponent } from './home/settings/change-password/index';
+import { ChangeEmailComponent } from './home/settings/change-email/index';
+import { ForgotPasswordComponent } from './auth/forgot-password/index';
 import { AuthGuard } from './_guards/index';
 
 const appRoutes: Routes = [

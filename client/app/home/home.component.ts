@@ -3,7 +3,7 @@ import { Component, OnInit, EventEmitter, Input } from '@angular/core';
 import { User } from '../_models/index';
 import { UserService } from '../_services/index';
 import { RosService, AlertService } from '../_services/index';
-import { MenubarComponent } from '../menubar/index';
+import { MenubarComponent } from './menubar/index';
 
 declare var ROSLIB: any;
 declare var ROS3D: any;
