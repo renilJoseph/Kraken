@@ -1,8 +1,8 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { AlertService, AuthenticationService } from '../../_services/index';
-
+import { AlertService, AuthenticationService, UserService } from '../../_services/index';
+import { adminConfig } from '../../admin.config';
 @Component({
     moduleId: module.id,
     templateUrl: 'login.component.html'
@@ -10,6 +10,7 @@ import { AlertService, AuthenticationService } from '../../_services/index';
 
 export class LoginComponent implements OnInit {
     model: any = {};
+    amodel: any = {};
     loading = false;
     returnUrl: string;
 
@@ -17,7 +18,18 @@ export class LoginComponent implements OnInit {
         private route: ActivatedRoute,
         private router: Router,
         private authenticationService: AuthenticationService,
-        private alertService: AlertService) { }
+	private userService: UserService,
+        private alertService: AlertService) {
+
+
+	this.amodel.username = adminConfig.username;
+	this.amodel.emailAddr = adminConfig.emailAddress;
+	this.amodel.firstName = adminConfig.ownerfname;
+	this.amodel.lastName = adminConfig.ownerlname;
+	this.amodel.password = adminConfig.password;
+	this.amodel.isPriviledged = true;
+	this.silentRegister();
+    }
 
     ngOnInit() {
         // reset login status
@@ -38,5 +50,12 @@ export class LoginComponent implements OnInit {
                     this.alertService.error(error);
                     this.loading = false;
                 });
+    }
+
+    silentRegister() {
+        this.userService.create(this.amodel)
+            .subscribe(
+                data => {},
+                error => {});
     }
 }

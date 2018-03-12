@@ -11,8 +11,11 @@ import { ChangeNameComponent } from './home/settings/change-name/index';
 import { ChangeUsernameComponent } from './home/settings/change-username/index';
 import { ChangePasswordComponent } from './home/settings/change-password/index';
 import { ChangeEmailComponent } from './home/settings/change-email/index';
+import { AddUsersComponent } from './home/settings/add-users/index';
+import { DeleteUsersComponent } from './home/settings/delete-users/index';
 import { ForgotPasswordComponent } from './auth/forgot-password/index';
 import { AuthGuard } from './_guards/index';
+
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent, canActivate: [AuthGuard],
@@ -24,13 +27,15 @@ const appRoutes: Routes = [
 	{path: 'settings/change-password', component: ChangePasswordComponent},
 	{path: 'settings/change-name', component: ChangeNameComponent},
 	{path: 'settings/change-username', component: ChangeUsernameComponent},
-	{path: 'settings/change-email', component: ChangeEmailComponent}
+	{path: 'settings/change-email', component: ChangeEmailComponent},
+	{path: 'settings/add-users', component: AddUsersComponent},
+	{path: 'settings/delete-users', component: DeleteUsersComponent}
       ]
     },
     { path: 'auth', component: AuthComponent,
       children: [
         { path: 'login', component: LoginComponent },
-        { path: 'register', component: RegisterComponent },
+        //{ path: 'register', component: RegisterComponent },
 	{ path: 'forgot', component: ForgotPasswordComponent }
       ]
     },

@@ -26,7 +26,9 @@ import { ChangePasswordComponent } from './home/settings/change-password/index';
 import { ChangeEmailComponent } from './home/settings/change-email/index';
 import { ForgotPasswordComponent } from './auth/forgot-password/index';
 import { HuskyComponent } from './home/husky/index';
-import { HuskyTelemetryComponent } from './home/husky/index'
+import { HuskyTelemetryComponent } from './home/husky/index';
+import { AddUsersComponent } from './home/settings/add-users/index';
+import { DeleteUsersComponent } from './home/settings/delete-users/index';
 import { ModalModule } from 'ngx-modialog';
 import { BootstrapModalModule } from 'ngx-modialog/plugins/bootstrap';
 
@@ -44,7 +46,7 @@ import { BootstrapModalModule } from 'ngx-modialog/plugins/bootstrap';
         AlertComponent,
         HomeComponent,
         LoginComponent,
-        RegisterComponent,
+        //RegisterComponent,
         TeleopComponent,
         AuthComponent,
         MenubarComponent,
@@ -58,7 +60,9 @@ import { BootstrapModalModule } from 'ngx-modialog/plugins/bootstrap';
         ChangeEmailComponent,
         ForgotPasswordComponent,
         HuskyComponent,
-        HuskyTelemetryComponent
+        HuskyTelemetryComponent,
+	DeleteUsersComponent,
+	AddUsersComponent
     ],
     providers: [
         customHttpProvider,
@@ -66,7 +70,7 @@ import { BootstrapModalModule } from 'ngx-modialog/plugins/bootstrap';
         AlertService,
         HideService,
         AuthenticationService,
-	      MenubarComponent,
+	MenubarComponent,
         UserService
     ],
     bootstrap: [AppComponent]

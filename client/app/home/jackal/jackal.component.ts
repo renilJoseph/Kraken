@@ -20,7 +20,6 @@ declare var MJPEGCANVAS: any;
 export class JackalComponent implements OnInit {
     ros: any;
     currentUser: User;
-    users: User[] = [];
     show: boolean;
 	topic = '/kinect2/qhd/image_color';
     private image1 = 'http://' + appConfig.robotUrl + ':8080/stream?topic=' + this.topic + '&width=900&height=550'
@@ -79,20 +78,11 @@ export class JackalComponent implements OnInit {
 	}
 
     ngOnInit() {
-      this.loadAllUsers();
       this.ros = this.rosService.getROS();
       this.innerWidth = window.innerWidth;
       this.innerHeight = window.innerHeight;
       this.image1 = 'http://' + appConfig.robotUrl + ':8080/stream?topic=' + this.topic + '&width=' + (.635*this.innerWidth).toFixed() + '&height=' + ((.635*this.innerWidth)*9/16).toFixed();
 
-    }
-
-    deleteUser(_id: string) {
-        this.userService.delete(_id).subscribe(() => { this.loadAllUsers() });
-    }
-
-    private loadAllUsers() {
-        this.userService.getAll().subscribe(users => { this.users = users; });
     }
 
     resizeWindow(input: string)

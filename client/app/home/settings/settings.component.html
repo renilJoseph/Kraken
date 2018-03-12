@@ -1,13 +1,17 @@
 <div class="container">
   <div class = "row">
     <div class = "col-md-6">
-      <h1>User Settings</h1><br />
+      <h1 *ngIf="this.currentUser.isPriviledged == false">User Settings</h1><br />
+      <h1 *ngIf="this.currentUser.isPriviledged == true">User Management</h1><br />
 	<ul style="list-style-type: none; margin:0; padding:0;">
-		<li style="margin:0; padding:0;"><label>Current password: **********</label><a [routerLink]="['change-password']"><button class="btn btn-link">Change Password?</button></a></li>
-		<li style="margin:0; padding:0;"><label>Current username: {{currentUser.username}}</label><a [routerLink]="['change-username']"><button class="btn btn-link">Change Username?</button></a></li>
-		<li style="margin:0; padding:0;"><label>Current name: {{currentUser.firstName}} {{currentUser.lastName}}</label><a [routerLink]="['change-name']"><button class="btn btn-link">Change Name?</button></a></li>
-		<li style="margin:0; padding:0;"><label>Current email address: {{currentUser.emailAddr}}</label><a [routerLink]="['change-email']"><button class="btn btn-link">Change Email?</button></a></li>
-		<br> <li style="margin:0; padding:0;"><a [routerLink]="['']"><button>Cancel</button></a></li>
+		<!-- Add NGIFs to these depending on Priviledge -->
+		<li *ngIf="this.currentUser.isPriviledged == false" style="margin:0; padding:0;"><label>Current password: **********</label><a [routerLink]="['change-password']"><button class="btn btn-link">Change Password?</button></a></li>
+		<li *ngIf="this.currentUser.isPriviledged == false" style="margin:0; padding:0;"><label>Current username: {{currentUser.username}}</label><a [routerLink]="['change-username']"><button class="btn btn-link">Change Username?</button></a></li>
+		<li *ngIf="this.currentUser.isPriviledged == false" style="margin:0; padding:0;"><label>Current name: {{currentUser.firstName}} {{currentUser.lastName}}</label><a [routerLink]="['change-name']"><button class="btn btn-link">Change Name?</button></a></li>
+		<li *ngIf="this.currentUser.isPriviledged == false" style="margin:0; padding:0;"><label>Current email address: {{currentUser.emailAddr}}</label><a [routerLink]="['change-email']"><button class="btn btn-link">Change Email?</button></a></li>
+		<li *ngIf="this.currentUser.isPriviledged == true" style="margin:0; padding:0;"><a [routerLink]="['add-users']"><button class="btn btn-link">Add Users?</button></a></li>
+		<li *ngIf="this.currentUser.isPriviledged == true" style="margin:0; padding:0;"><a [routerLink]="['delete-users']"><button class="btn btn-link">Delete Users?</button></a></li>
+		<br><br> <li style="margin:0; padding:0;"><a [routerLink]="['']"><button>Cancel</button></a></li>
 	</ul>	
     </div>
   </div>

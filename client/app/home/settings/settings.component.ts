@@ -10,11 +10,10 @@ export class SettingsComponent implements OnInit{
   currentUser: User;
 
   constructor(private userService: UserService){
-	this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-	//this.currentUser = userService.getById(this.currentUser._id);
+	//this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
 
   ngOnInit(){
-
+	this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
 }

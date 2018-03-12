@@ -32,6 +32,7 @@ function authenticate(username, password) {
                 firstName: user.firstName,
                 lastName: user.lastName,
 		emailAddr: user.emailAddr,
+		isPriviledged: user.isPriviledged,
                 token: jwt.sign({ sub: user._id }, config.secret)
             });
         } else {
@@ -80,8 +81,8 @@ function getById(_id) {
 
 function create(userParam) {
     var deferred = Q.defer();
-
-    // validation
+    var edeferred = Q.defer();
+    // username validation
     db.users.findOne(
         { username: userParam.username },
         function (err, user) {
@@ -147,6 +148,7 @@ function update(_id, userParam) {
             lastName: userParam.lastName,
             username: userParam.username,
 	    emailAddr: userParam.emailAddr,
+	    isPriviledged: userParam.isPriviledged,
         };
 
         // update password if it was entered
