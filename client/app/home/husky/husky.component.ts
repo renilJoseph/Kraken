@@ -22,7 +22,7 @@ export class HuskyComponent implements OnInit {
     currentUser: User;
     users: User[] = [];
     show: boolean;
-    topic = '/kinect2/qhd/image_color';
+    topic = '/kinect2/qhd/image_color/compressed';
     private image1 = 'http://' + appConfig.robotUrl + ':8080/stream?topic=' + this.topic + '&width=900&height=550'
     private large = false;
     public innerWidth: any;
