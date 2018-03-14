@@ -21,7 +21,7 @@ export class JackalComponent implements OnInit {
     ros: any;
     currentUser: User;
     show: boolean;
-	topic = '/kinect2/qhd/image_color/compressed';
+	topic = '/kinect2/qhd/image_color';
     private image1 = 'http://' + appConfig.robotUrl + ':8080/stream?topic=' + this.topic + '&width=900&height=550'
     private large = false;
     public innerWidth: any;
