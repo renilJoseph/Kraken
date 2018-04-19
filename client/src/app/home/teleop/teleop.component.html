@@ -1,0 +1,22 @@
+<div>
+  <div class="teleop">
+    <button class = "btn btn-normal tel-left" (click)="buttonTeleop(0, 0, 1)">&larr;</button>
+    <button class = "btn btn-normal tel-up" (click)="buttonTeleop(0.5, 0, 0)">&uarr;</button>
+    <button class = "btn btn-normal tel-down" (click)="buttonTeleop(-0.5, 0, 0)">&darr;</button>
+    <button class = "btn btn-normal tel-right" (click)="buttonTeleop(0, 0, -1)">&rarr;</button>
+  </div>
+</div>
+  <!--
+<label class="switch">
+  <input type="checkbox" (click)="changeSpeed()">
+    <span class="slider round">
+      <span class="sliderlabel slow">Slow</span>
+      <span class="sliderlabel fast">Fast</span>
+    </span>
+</label>
+-->
+<div>
+  <button (click)="changeSpeed(0)" class = "btn" id = "switch-off">Off</button>
+  <button (click)="changeSpeed(1)" class="btn" id = "switch-slow">Slow</button>
+  <button (click)="changeSpeed(2)" class="btn" id = "switch-fast">Fast</button>
+</div>

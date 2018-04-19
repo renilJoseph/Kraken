@@ -1,5 +1,0 @@
-<menubar></menubar>
-<alert></alert>
-<div class="bottompart">
-    <router-outlet></router-outlet>
-</div>
