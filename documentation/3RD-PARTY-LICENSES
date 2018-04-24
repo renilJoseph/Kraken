@@ -1,0 +1,2 @@
+This project includes third party open source packages: roslibjs, EventEmitter2, EaselJS, ros2djs, nav2djs, and ngx-modialog.
+See client/source/assets/roslibjs/LICENSE.txt, client/source/assets/EventEmitter2/LICENSE.txt, client/source/assets/EaselJS/LICENSE.txt, client/source/assets/ros2djs/LICENSE.txt, client/source/assets/nav2djs/LICENSE.txt, and client/source/assets/ngx-modialog-LICENSE.txt for details.

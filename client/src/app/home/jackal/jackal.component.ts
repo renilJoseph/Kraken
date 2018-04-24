@@ -8,8 +8,6 @@ import { HideService } from '../../_services/index';
 import { appConfig } from '../../app.config';
 
 declare var ROSLIB: any;
-declare var ROS3D: any;
-declare var MJPEGCANVAS: any;
 declare var ROS2D: any;
 declare var NAV2D: any;
 
@@ -23,7 +21,6 @@ export class JackalComponent implements OnInit {
 	mapViewer: any;
     currentUser: User;
     users: User[] = [];
-    show: boolean;
 	topic = '/image';
     private image1 = 'http://' + appConfig.robotUrl + ':8080/stream?topic=' + this.topic + '&width=900&height=550';
     private large = false;
@@ -39,15 +36,6 @@ export class JackalComponent implements OnInit {
     resizeTimeout: any;
     @ViewChild('TLM') TLM:ElementRef
     ngDoCheck() {
-      /*
-      if(this.hideservice.getIt()) {
-    		this.resizeViewer(.635);
-        	}
-    	else if(!this.hideservice.getIt()) {
-    		this.resizeViewer(.95);
-    	}
-      */
-
     	if(this.hideservice.getIt() && !this.prevHideServiceValue) {
     		this.resizeViewer(.635);
         	}
@@ -60,7 +48,6 @@ export class JackalComponent implements OnInit {
 
     constructor(private userService: UserService, private rosService:RosService, public hideservice: HideService, public modal: Modal) {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-        this.show = hideservice.getIt();
     }
 
     @HostListener('window:resize')
@@ -82,7 +69,7 @@ export class JackalComponent implements OnInit {
 	resizeViewer(widthMultiplier: any)
 	{
 		//calculate a width based on the available vertical space
-		this.calcWidth = ((this.innerHeight - 90)*16/9);
+		this.calcWidth = ((this.innerHeight - 110)*16/9);
 		//calculate a height based on the available horizontal space (account for the presence of telemetry)
 		this.calcHeight = (widthMultiplier*this.innerWidth*9/16);
 		//if the calculated width is wider than what is available, use the calculated height
@@ -94,45 +81,29 @@ export class JackalComponent implements OnInit {
 		else
 		{
             this.currentWidth = this.calcWidth;
-            this.currentHeight = (this.innerHeight - 90);
+            this.currentHeight = (this.innerHeight - 110);
 		}
 		//now we have the best size estimate, so resize the appropriate viewer
 		if(!this.viewMap)
 			this.image1 = 'http://' + appConfig.robotUrl + ':8080/stream?topic=' + this.topic + '&width=' + this.currentWidth.toFixed() + '&height=' + this.currentHeight.toFixed();
 		else
 			{
-        this.mapViewer.scene.canvas.remove();
-        this.mapViewer = new ROS2D.Viewer({
-            divID : 'viewer',
-            width : this.currentWidth,
-            height : this.currentHeight
-        });
+        		this.mapViewer.scene.canvas.remove();
+        		this.mapViewer = new ROS2D.Viewer({
+            		divID : 'viewer',
+           			width : this.currentWidth,
+            		height : this.currentHeight
+        		});
 
-        // Setup the nav client.
-        var nav = NAV2D.OccupancyGridClientNav({
-            ros : this.ros,
-            topic : '/map',
-            serverName: '/move_base',
-            rootObject : this.mapViewer.scene,
-            viewer : this.mapViewer
-        });
-        /*
-				this.mapViewer.height = this.currentHeight;
-				this.mapViewer.width = this.currentWidth;
-        debugger;
-        this.mapViewer.scene.canvas.height = this.currentHeight;
-        this.mapViewer.scene.canvas.width = this.currentWidth;
-        this.mapViewer.scene.canvas.style.width = this.currentWidth;
-        this.mapViewer.scene.canvas.style.height = this.currentHeight;
-        this.mapViewer.scaleToDimensions(this.currentWidth, this.currentHeight);
-        var nav = NAV2D.OccupancyGridClientNav({
-           	ros : this.ros,
-           	topic : '/map',
-            serverName: '/move_base',
-           	rootObject : this.mapViewer.scene,
-           	viewer : this.mapViewer
-        });
-        */
+        		// Setup the nav client.
+        		var nav = NAV2D.OccupancyGridClientNav({
+            		ros : this.ros,
+            		topic : '/map',
+            		serverName: '/move_base',
+            		rootObject : this.mapViewer.scene,
+            		viewer : this.mapViewer,
+					withOrientation : true
+        		});
 			}
 	}
 
@@ -248,7 +219,6 @@ export class JackalComponent implements OnInit {
 		    var img = document.getElementById('image1');
     		//img.style.visibility = 'hidden';
 			this.viewMap = true;
-			//this.mapViewer.scene.canvas.hidden = false;
 		}
 		else
 		{
@@ -256,7 +226,7 @@ export class JackalComponent implements OnInit {
 			this.mapViewer.scene.canvas.hidden = true;
 		    var img = document.getElementById('image1');
     		//img.style.visibility = 'visible';
-        this.mapViewer.scene.canvas.remove();
+        	this.mapViewer.scene.canvas.remove();
 
 		}
 		if(this.hideservice.getIt() == true)

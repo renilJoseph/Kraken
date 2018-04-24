@@ -1,4 +1,4 @@
-import { Component, OnInit, DoCheck, EventEmitter, Input, HostListener, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, DoCheck, EventEmitter, Input, HostListener, ViewChild, ElementRef, ViewContainerRef } from '@angular/core';
 import { Overlay } from 'ngx-modialog';
 import { Modal } from 'ngx-modialog/plugins/bootstrap';
 import { User } from '../../_models/index';
@@ -8,8 +8,8 @@ import { HideService } from '../../_services/index';
 import { appConfig } from '../../app.config';
 
 declare var ROSLIB: any;
-declare var ROS3D: any;
-declare var MJPEGCANVAS: any;
+declare var ROS2D: any;
+declare var NAV2D: any;
 
 @Component({
     moduleId: module.id,
@@ -19,30 +19,37 @@ declare var MJPEGCANVAS: any;
 
 export class HuskyComponent implements OnInit {
     ros: any;
+	mapViewer: any;
     currentUser: User;
     users: User[] = [];
     show: boolean;
-    topic = '/kinect2/qhd/image_color';
-    private image1 = 'http://' + appConfig.robotUrl + ':8080/stream?topic=' + this.topic + '&width=900&height=550'
+	topic = '/image';
+    private image1 = 'http://' + appConfig.robotUrl + ':8080/stream?topic=' + this.topic + '&width=900&height=550';
     private large = false;
     public innerWidth: any;
     public innerHeight: any;
     private calcWidth: any;
     private calcHeight: any;
+    private currentWidth: any;
+    private currentHeight: any;
+    private nav: any;
+    private viewMap = false;
+    private prevHideServiceValue = false;
     resizeTimeout: any;
     @ViewChild('TLM') TLM:ElementRef
     ngDoCheck() {
-    	if(this.hideservice.getIt()) {
-		this.resizeViewer(.635);
+    	if(this.hideservice.getIt() && !this.prevHideServiceValue) {
+    		this.resizeViewer(.635);
+        	}
+    	else if(!this.hideservice.getIt() && this.prevHideServiceValue) {
+    		this.resizeViewer(.95);
     	}
-	else {
-		this.resizeViewer(.95);
-	}
+      this.prevHideServiceValue = this.hideservice.getIt();
+
     }
 
     constructor(private userService: UserService, private rosService:RosService, public hideservice: HideService, public modal: Modal) {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-        this.show = hideservice.getIt();
     }
 
     @HostListener('window:resize')
@@ -64,26 +71,66 @@ export class HuskyComponent implements OnInit {
 	resizeViewer(widthMultiplier: any)
 	{
 		//calculate a width based on the available vertical space
-		this.calcWidth = ((this.innerHeight - 90)*16/9);
+		this.calcWidth = ((this.innerHeight - 110)*16/9);
 		//calculate a height based on the available horizontal space (account for the presence of telemetry)
 		this.calcHeight = (widthMultiplier*this.innerWidth*9/16);
 		//if the calculated width is wider than what is available, use the calculated height
 		if(this.calcWidth > (widthMultiplier*this.innerWidth))
 		{
-			this.image1 = 'http://' + appConfig.robotUrl + ':8080/stream?topic=' + this.topic + '&width=' + (widthMultiplier*this.innerWidth).toFixed() + '&height=' + this.calcHeight.toFixed();
+            this.currentWidth = (widthMultiplier*this.innerWidth);
+            this.currentHeight = this.calcHeight;
 		}
 		else
 		{
-			this.image1 = 'http://' + appConfig.robotUrl + ':8080/stream?topic=' + this.topic + '&width=' + this.calcWidth.toFixed() + '&height=' + (this.innerHeight - 90);
+            this.currentWidth = this.calcWidth;
+            this.currentHeight = (this.innerHeight - 110);
 		}
+		//now we have the best size estimate, so resize the appropriate viewer
+		if(!this.viewMap)
+			this.image1 = 'http://' + appConfig.robotUrl + ':8080/stream?topic=' + this.topic + '&width=' + this.currentWidth.toFixed() + '&height=' + this.currentHeight.toFixed();
+		else
+			{
+        		this.mapViewer.scene.canvas.remove();
+        		this.mapViewer = new ROS2D.Viewer({
+            		divID : 'viewer',
+           			width : this.currentWidth,
+            		height : this.currentHeight
+        		});
+
+        		// Setup the nav client.
+        		var nav = NAV2D.OccupancyGridClientNav({
+            		ros : this.ros,
+            		topic : '/map',
+            		serverName: '/move_base',
+            		rootObject : this.mapViewer.scene,
+            		viewer : this.mapViewer,
+					withOrientation : true
+        		});
+			}
 	}
 
     ngOnInit() {
       this.loadAllUsers();
-      this.ros = this.rosService.getROS();
-      this.innerWidth = window.innerWidth;
-      this.innerHeight = window.innerHeight;
-      this.image1 = 'http://' + appConfig.robotUrl + ':8080/stream?topic=' + this.topic + '&width=' + (.635*this.innerWidth).toFixed() + '&height=' + ((.635*this.innerWidth)*9/16).toFixed();
+      	this.ros = this.rosService.getROS();
+      	this.innerWidth = window.innerWidth;
+      	this.innerHeight = window.innerHeight;
+      	this.image1 = 'http://' + appConfig.robotUrl + ':8080/stream?topic=' + this.topic + '&width=' + (.635*this.innerWidth).toFixed() + '&height=' + ((.635*this.innerWidth)*9/16).toFixed();
+		// Create the main viewer.
+       	this.mapViewer = new ROS2D.Viewer({
+           	divID : 'viewer',
+           	width : 600,
+           	height : 480
+        });
+
+        // Setup the nav client.
+        var nav = NAV2D.OccupancyGridClientNav({
+           	ros : this.ros,
+           	topic : '/map',
+            serverName: '/move_base',
+           	rootObject : this.mapViewer.scene,
+           	viewer : this.mapViewer
+        });
+		      this.mapViewer.scene.canvas.hidden = true;
     }
 
     deleteUser(_id: string) {
@@ -162,6 +209,31 @@ export class HuskyComponent implements OnInit {
 		       dialogRef.result.then( result => this.changeTopic(result))
 		   });
 	  }
+
+	//toggle the viewer between the map style view, and the image topic stream
+	toggleViewerType()
+	{
+		if(!this.viewMap)
+		{
+			this.image1 = "";
+		    var img = document.getElementById('image1');
+    		//img.style.visibility = 'hidden';
+			this.viewMap = true;
+		}
+		else
+		{
+			this.viewMap = false;
+			this.mapViewer.scene.canvas.hidden = true;
+		    var img = document.getElementById('image1');
+    		//img.style.visibility = 'visible';
+        	this.mapViewer.scene.canvas.remove();
+
+		}
+		if(this.hideservice.getIt() == true)
+			this.resizeViewer(.635);
+		else
+			this.resizeViewer(.95);
+	}
 
     modulo(a: any, b: any) {
         return a - Math.floor(a/b)*b;
