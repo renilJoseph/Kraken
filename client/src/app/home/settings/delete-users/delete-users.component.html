@@ -1,0 +1,16 @@
+
+<div class="container">
+  <div class = "row">
+    <div class = "col-md-6">
+      <h3>Delete Users</h3>
+          <ul>
+              <li *ngFor="let user of users">
+                  {{user.username}} ({{user.firstName}} {{user.lastName}})
+                  - <a (click)="deleteUser(user._id)">Delete</a>
+              </li>
+          </ul>
+    </div>
+    <div class="form-group">
+            <a [routerLink]="['/settings']" class="btn btn-link">Go Back</a>
+  </div>
+</div>

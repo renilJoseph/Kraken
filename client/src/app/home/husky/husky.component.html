@@ -1,0 +1,16 @@
+<div class="row" ><!--style="border:3px solid black"-->
+    <div class="col-sm-12 nopadding">
+      <div [ngClass]="this.hideservice.getIt() != false ? 'col-md-8 col-md-offset-0':'col-md-12 col-md-offset-0'">
+	    <img [src]="image1">
+        <div id="viewer"></div>
+        <!-- <button (click)="resizeBox()">Change Viewer Size</button> -->
+		<button (click)="topicBox()">Change Topic</button>
+	<button (click)="toggleViewerType()">Toggle Kinect/Map</button><br />
+          <teleop></teleop>
+      </div>
+
+      <div class="col-md-4 col-md-offset-0" style="margin:0px; padding:0px; height:100%; background-color:lightGray; height:90vh" *ngIf="this.hideservice.getIt()">
+        <husky-telemetry></husky-telemetry>
+      </div>
+    </div>
+  </div>

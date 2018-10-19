@@ -1,0 +1,43 @@
+{
+    "name": "Robot-Management-Application-client",
+    "version": "1.0.0",
+    "description": "Client for MEAN Stack with Angular 2/4 User Login/Registration",
+    "scripts": {
+        "start": "tsc && concurrently \"npm run tsc:w\" \"npm run lite\" ",
+        "lite": "lite-server",
+        "tsc": "tsc",
+        "tsc:w": "tsc -w"
+    },
+    "license": "MIT",
+    "dependencies": {
+        "@angular/cli": "^1.7.4",
+        "@angular/common": "^4.0.0",
+        "@angular/compiler": "^4.0.0",
+        "@angular/core": "^4.0.0",
+        "@angular/forms": "^4.0.0",
+        "@angular/http": "^4.0.0",
+        "@angular/platform-browser": "^4.0.0",
+        "@angular/platform-browser-dynamic": "^4.0.0",
+        "@angular/router": "^4.0.0",
+        "balanced-match": "^1.0.0",
+        "brace-expansion": "^1.1.11",
+        "concat-map": "0.0.1",
+        "core-js": "^2.5.3",
+        "jquery": "^3.3.1",
+        "minimatch": "^3.0.4",
+        "mkdirp": "^0.5.1",
+        "ngx-modialog": "3.0.3",
+        "package.json": "^2.0.1",
+        "rxjs": "^5.5.6",
+        "save": "^2.3.2",
+        "systemjs": "^0.19.47",
+        "typescript": "^2.3.4",
+        "zone.js": "^0.8.20"
+    },
+    "devDependencies": {
+        "@angular/compiler-cli": "^4.4.7",
+        "@types/node": "^6.0.99",
+        "concurrently": "^3.5.1",
+        "lite-server": "^2.3.0"
+    }
+}

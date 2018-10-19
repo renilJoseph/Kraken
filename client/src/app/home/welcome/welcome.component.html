@@ -1,0 +1,13 @@
+<div class="container">
+  <div class = "row">
+    <div class = "col-md-6">
+      <h1>Please select a robot to operate</h1>
+
+      <div class="container">
+        <button type="button" class="btn btn-default btn-lg" (click)="getWebSocket('/jackal')"><input type="image" src="../../assets/jackal.svg" height=14px width=18px align="middle" style="margin-right:10px;" />Jackal</button>
+        <button type="button" class="btn btn-default btn-lg" (click)="getWebSocket('/husky')"><input type="image" src="../../assets/husky.svg" height=14px width=18px align="middle" style="margin-right:10px;" />Husky</button>
+        <button type="button" class="btn btn-default btn-lg" ><input type="image" src="../../assets/ur5.png" height=15px width=19px align="middle" style="margin-right:10px;" />UR5</button>
+      </div>
+    </div>
+  </div>
+</div>

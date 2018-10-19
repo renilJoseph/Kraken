@@ -1,0 +1,52 @@
+<nav class = "navbar navbar-default">
+  <div class = "container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">CRS Robotics Lab</a>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Robots<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a (click)="getWebSocket('/jackal')">Jackal <input type="image" src="../../assets/jackal.svg" height=14px width=18px align="middle" style="margin-left:50px; margin-right:0px;"/></a></li><!--<a [routerLink]="['/jackal']">-->
+            <li><a (click)="getWebSocket('/husky')">Husky <input type="image" src="../../assets/husky.svg" height=14px width=18px align="middle" style="margin-left:50px; margin-right:0px;"/></a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sensors<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a>Kinect</a></li>
+            <li><a href="#">Kinect <i class="fab fa-xbox" style="margin-left:55px; margin-right:0px;"></i></a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Game<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a (click)="getGame('/Game/gametrain')">Train <input type="image" src="../../assets/walle.jpeg" height=14px width=18px align="middle" style="margin-left:50px; margin-right:0px;"/></a></li><!--<a [routerLink]="['/jackal']">-->
+            <li><a (click)="getGame('/Game/gametest')">Test <input type="image" src="../../assets/walle.jpeg" height=14px width=18px align="middle" style="margin-left:50px; margin-right:0px;"/></a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hi {{currentUser.username}}!<span class="caret"></span></a>
+          <ul class="dropdown-menu" style="margin-right:0px;">
+	    <li><a [routerLink]="['/settings']">Settings <i class="fas fa-cogs" style="margin-left:50px; margin-right:0px;"></i></a></li>
+            <li><a [routerLink]="['/auth/login']">Logout <i class="fas fa-sign-out-alt" style="margin-left:55px; margin-right:0px;"></i></a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+	      <li><button *ngIf="!show" (click)="hideservice.showIt(); show = hideservice.getIt();" class="btn btn-default" style="margin-top:15px; margin-left:10px; width:5em;">Show</button></li>
+        <li><button *ngIf="show" (click)="hideservice.hideIt(); show = hideservice.getIt();" class="btn btn-default" style="margin-top:15px; margin-left:10px; width:5em;">Hide</button></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>

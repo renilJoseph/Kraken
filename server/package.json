@@ -1,0 +1,22 @@
+{
+    "name": "Robot-Management-Application-DBserver",
+    "version": "1.0.0",
+    "description": "Server for MEAN Stack with Angular 2/4 User Login/Registration",
+    "dependencies": {
+        "bcryptjs": "^2.1.0",
+        "body-parser": "^1.13.2",
+        "cors": "^2.8.1",
+        "express": "^4.13.0",
+        "express-jwt": "^3.0.1",
+        "jsonwebtoken": "^5.0.2",
+        "lodash": "^4.17.11",
+        "mongodb": "^2.2.36",
+        "mongoskin": "^2.1.0",
+        "package.json": "^2.0.1",
+        "q": "^1.4.1",
+        "request": "^2.88.0",
+        "rootpath": "^0.1.2",
+        "uuid": "^3.2.1"
+    },
+    "license": "MIT"
+}
