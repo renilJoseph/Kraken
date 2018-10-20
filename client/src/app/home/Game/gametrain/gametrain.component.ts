@@ -7,14 +7,21 @@ import { RosService } from '../../../_services/index';
 import { HideService } from '../../../_services/index';
 import { appConfig } from '../../../app.config';
 
+declare var ROSLIB: any;
 
 @Component({
   selector: 'app-gametrain',
   templateUrl: './gametrain.component.html',
-  styleUrls: ['./gametrain.component.css']
+  styleUrls: ['./gametrain.component.css'],
+  providers: [RosService]
 })
 export class GametrainComponent implements AfterViewInit  {
     ros: any;
+    cmdVel: any;
+    speed: number;
+    x: number;
+    y: number;  
+    z: number;
     currentUser: User;
     users: User[];
 
@@ -359,6 +366,16 @@ export class GametrainComponent implements AfterViewInit  {
 
 
         ngAfterViewInit() {
+            this.ros = this.rosService.getROS();
+            this.x = 0;
+            this.y = 0;
+            this.z = 0;
+            this.speed = 1;  //Speed is 1 m/s
+            this.cmdVel = new ROSLIB.Topic({
+                ros : this.ros,
+                name : '/cmd_vel',
+                messageType : 'geometry_msgs/Twist'
+            });
           console.log("******************ngoniti*************************" + this.tileW);
           this.ctx = (<HTMLCanvasElement>this.gamecanvas.nativeElement).getContext('2d');
           var self = this;
@@ -380,6 +397,31 @@ export class GametrainComponent implements AfterViewInit  {
             this.tileset.src = this.tilesetURL;
       
         };
+
+        buttonTeleop(a: number, b: number, c: number)
+      {
+        this.x = a * this.speed;
+        this.y = b;
+        this.z = c;
+        this.publishTeleop();
+      }
+
+      publishTeleop()
+      {
+        let twist = new ROSLIB.Message({
+          angular : {
+            x : 0,
+            y : 0,
+            z : this.z
+          },
+          linear : {
+            x : this.x,
+            y : this.y,
+            z : this.z
+          }
+        });
+        this.cmdVel.publish(twist);
+      }
 
         
 
@@ -542,12 +584,16 @@ export class GametrainComponent implements AfterViewInit  {
         execMove(player,x, y, direction) {
             switch (direction) {
                 case "up":
+                    this.buttonTeleop(0.5, 0, 0);
                     return this.moveUp(player, Date.now());
                 case "down":
+                    this.buttonTeleop(-0.5, 0, 0);
                     return this.moveDown(player, Date.now());
                 case "right":
+                    this.buttonTeleop(0, 0, -1);
                     return this.moveRight(player, Date.now());
                 case "left":
+                    this.buttonTeleop(0, 0, 1);
                     return this.moveLeft(player, Date.now());
             }
         };
